@@ -83,7 +83,7 @@ const VotePoll = () => {
 
       <div className=" w-full flex justify-center items-center p-2  overflow-y-scroll">
         <div className=" w-[95%] border p-2 rounded-md">
-          <p className=" text-[#F7998E] text-[1.1rem] font-bold mb-1">
+          <p className=" text-[#F7998E] text-[1.2rem] font-bold mb-3">
             {getPoll?.question}
           </p>
 
@@ -95,7 +95,7 @@ const VotePoll = () => {
               return (
                 <div
                   key={index}
-                  className="flex space-y-3 items-center justify-between"
+                  className="flex space-y-5 items-center justify-between"
                 >
                   <div className="flex items-center flex-row gap-2">
                     <IoMdCheckmarkCircle
