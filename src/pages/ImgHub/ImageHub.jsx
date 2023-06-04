@@ -46,7 +46,7 @@ const ImageHub = () => {
           >
             <Link to={`/image_hub/images/${x._id}`}>
               <img
-                className="  w-[140px] h-[140px] rounded-xl overflow-hidden object-cover"
+                className="  w-[140px] h-[140px] rounded-xl overflow-hidden object-cover active:scale-95"
                 //   src={x.photos[0].url}
                 src="https://i.postimg.cc/0jhx5pxW/ajhdgkdc.jpg"
                 alt=""

@@ -46,13 +46,15 @@ const VideoGallery = () => {
           >
             <Link to={`/video_gallery/videos/${x._id}`}>
               <img
-                className="  w-[140px] h-[140px] rounded-xl overflow-hidden object-cover"
+                className="  w-[140px] h-[140px] rounded-xl overflow-hidden object-cover active:scale-95"
                 //   src={x.photos[0].url}
                 src="https://i.postimg.cc/0jhx5pxW/ajhdgkdc.jpg"
                 alt=""
               />
             </Link>
-            <p className=" text-center text-[13px] p-1">{x.VideoCollectionName}</p>
+            <p className=" text-center text-[13px] p-1">
+              {x.VideoCollectionName}
+            </p>
           </div>
         ))}
       </div>
