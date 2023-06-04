@@ -70,7 +70,7 @@ const CountDown = () => {
 
   return (
     <TopNav routeLink={"/"} barTitle={"Count Down"}>
-      <div className="w-full h-full flex flex-col items-center justify-center p-2 gap-3 overflow-y-scroll">
+      <div className="w-full flex flex-col items-center justify-center p-2 gap-3 overflow-y-scroll mt-10">
         <div className="flex items-center justify-center mt-2">
           <img
             className="w-[90%]"
