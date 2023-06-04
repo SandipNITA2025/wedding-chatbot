@@ -74,7 +74,7 @@ const VotePoll = () => {
 
   return (
     <TopNav routeLink={"/polls"} barTitle={"Vote Poll"}>
-      <div className=" w-full flex justify-center items-center p-2  overflow-y-scroll mt-14">
+      <div className=" w-full flex justify-center items-center p-2  overflow-y-scroll mt-1">
         <div className=" w-[95%] border p-2 rounded-md">
           <p className=" text-[#F7998E] text-[1.2rem] font-bold mb-3">
             {getPoll?.question}

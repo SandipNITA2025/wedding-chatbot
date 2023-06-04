@@ -42,7 +42,7 @@ const Polls = () => {
     <TopNav routeLink={'/'} barTitle={"Polls"}>
 
       {/* DISPLAY POLLS START*/}
-      <div className=" w-full grid grid-cols-2 p-2 gap-3 overflow-y-scroll mt-14">
+      <div className=" w-full grid grid-cols-2 p-2 gap-3 overflow-y-scroll mt-1">
         {getPolls.map((x) => (
           <div
             key={x._id}

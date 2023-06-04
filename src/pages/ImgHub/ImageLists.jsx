@@ -42,7 +42,7 @@ const ImageLists = () => {
     <TopNav routeLink={'/image_hub'} barTitle={getLists.collectionName}>
 
       {/* DISPLAY COLLECTIONS LISTS START*/}
-      <div className="  w-full overflow-y-scroll mt-14">
+      <div className="  w-full overflow-y-scroll mt-1">
         <div className="grid grid-cols-2 p-2 gap-3 w-full h-fit rounded-xl overflow-hidden">
           {getLists?.photos?.map((x) => (
             <div
