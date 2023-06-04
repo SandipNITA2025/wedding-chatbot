@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const TopNav = ({ children, routeLink, barTitle }) => {
   return (
     <div className="w-full h-full mx-auto">
-      <nav className="flex items-center justify-between bg-white w-full p-3 shadow-md absolute top-0 z-[5]">
+      <nav className="flex items-center justify-between bg-white w-full p-3 shadow-md fixed top-0 z-[5]">
         <Link to={routeLink}>
           <MdOutlineArrowBackIosNew size={20} />
         </Link>
