@@ -4,6 +4,7 @@ import { BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { API } from "../../utils/API";
+import TopNav from "../../components/TopNav/TopNav";
 
 const CountDown = () => {
   const [details, setDetails] = useState([]);
@@ -68,15 +69,7 @@ const CountDown = () => {
   };
 
   return (
-    <div className="w-full h-full mx-auto ">
-      <nav className="flex items-center justify-between bg-white w-full p-3 shadow-md absolute top-0">
-        <Link to="/">
-          <MdOutlineArrowBackIosNew size={20} />
-        </Link>
-        <p>Count Down</p>
-        <BiSearch size={20} />
-      </nav>
-
+    <TopNav routeLink={"/"} barTitle={"Count Down"}>
       <div className="w-full h-full flex flex-col items-center justify-center p-2 gap-3 overflow-y-scroll">
         <div className="flex items-center justify-center mt-2">
           <img
@@ -97,7 +90,7 @@ const CountDown = () => {
           </button>
         </div>
       </div>
-    </div>
+    </TopNav>
   );
 };
 

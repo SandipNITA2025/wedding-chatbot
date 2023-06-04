@@ -5,6 +5,7 @@ import { BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { API } from "../../utils/API";
+import TopNav from "../../components/TopNav/TopNav";
 
 const ImageHub = () => {
   const [imgCollections, setImgCollections] = useState([]);
@@ -28,17 +29,10 @@ const ImageHub = () => {
   }, []);
 
   return (
-    <div className="  w-full mx-auto mt-14 ">
-      <nav className=" flex items-center justify-between bg-white w-full p-3 shadow-md absolute top-0">
-        <Link to="/">
-          <MdOutlineArrowBackIosNew size={20} />
-        </Link>
-        <p>Image Hub</p>
-        <BiSearch size={20} />
-      </nav>
+    <TopNav routeLink={'/'} barTitle={"Image Hub"}>
 
       {/* DISPLAY COLLECTIONS START*/}
-      <div className=" w-full grid grid-cols-2 p-2 gap-3 overflow-y-scroll">
+      <div className=" w-full grid grid-cols-2 p-2 gap-3 overflow-y-scroll mt-14">
         {imgCollections?.details?.map((x) => (
           <div
             key={x._id}
@@ -57,7 +51,7 @@ const ImageHub = () => {
         ))}
       </div>
       {/* DISPLAY COLLECTIONS END*/}
-    </div>
+      </TopNav>
   );
 };
 

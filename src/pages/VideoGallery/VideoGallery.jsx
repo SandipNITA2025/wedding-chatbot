@@ -5,6 +5,7 @@ import { BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { API } from "../../utils/API";
+import TopNav from "../../components/TopNav/TopNav";
 
 const VideoGallery = () => {
   const [vidCollections, setvidCollections] = useState([]);
@@ -28,23 +29,15 @@ const VideoGallery = () => {
   }, []);
 
   return (
-    <div className="  w-full mx-auto mt-14 ">
-      <nav className=" flex items-center justify-between bg-white w-full p-3 shadow-md absolute top-0">
-        <Link to="/">
-          <MdOutlineArrowBackIosNew size={20} />
-        </Link>
-        <p>Video Gallery</p>
-        <BiSearch size={20} />
-      </nav>
-
+    <TopNav routeLink={"/"} barTitle={"Video Gallery"}>
       {/* DISPLAY COLLECTIONS START*/}
-      <div className=" w-full grid grid-cols-2 p-2 gap-3 overflow-y-scroll">
-        {vidCollections?.details?.map((x) => (
+      <div className=" w-full grid grid-cols-2 p-2 gap-3 overflow-y-scroll mt-14">
+        {vidCollections?.details?.map((i) => (
           <div
-            key={x._id}
+            key={i._id}
             className=" flex flex-col items-center w-full h-fit rounded-xl overflow-hidden"
           >
-            <Link to={`/video_gallery/videos/${x._id}`}>
+            <Link to={`/video_gallery/videos/${i._id}`}>
               <img
                 className="  w-[140px] h-[140px] rounded-xl overflow-hidden object-cover active:scale-95"
                 //   src={x.photos[0].url}
@@ -53,13 +46,13 @@ const VideoGallery = () => {
               />
             </Link>
             <p className=" text-center text-[13px] p-1">
-              {x.VideoCollectionName}
+              {i.VideoCollectionName}
             </p>
           </div>
         ))}
       </div>
       {/* DISPLAY COLLECTIONS END*/}
-    </div>
+    </TopNav>
   );
 };
 

@@ -7,6 +7,7 @@ import { HiViewfinderCircle } from "react-icons/hi2";
 import { IoMdCheckmarkCircle } from "react-icons/io";
 // import { IoMdCheckmarkCircle } from 'react-icons/io5';
 import { API } from "../../utils/API";
+import TopNav from "../../components/TopNav/TopNav";
 
 const VotePoll = () => {
   const { id } = useParams();
@@ -72,16 +73,8 @@ const VotePoll = () => {
   };
 
   return (
-    <div className="  w-full mx-auto mt-14 ">
-      <nav className=" flex items-center justify-between bg-white w-full p-3 shadow-md absolute top-0">
-        <Link to="/polls">
-          <MdOutlineArrowBackIosNew size={20} />
-        </Link>
-        <p>Vote Poll</p>
-        <BiSearch size={20} />
-      </nav>
-
-      <div className=" w-full flex justify-center items-center p-2  overflow-y-scroll">
+    <TopNav routeLink={"/polls"} barTitle={"Vote Poll"}>
+      <div className=" w-full flex justify-center items-center p-2  overflow-y-scroll mt-14">
         <div className=" w-[95%] border p-2 rounded-md">
           <p className=" text-[#F7998E] text-[1.2rem] font-bold mb-3">
             {getPoll?.question}
@@ -99,6 +92,7 @@ const VotePoll = () => {
                 >
                   <div className="flex items-center flex-row gap-2">
                     <IoMdCheckmarkCircle
+                      size={20}
                       onClick={() => handleVote(getPoll?._id, index)}
                       className={`${
                         submit && getPoll.submittedOptionIndex === index
@@ -120,7 +114,7 @@ const VotePoll = () => {
           </div>
         </div>
       </div>
-    </div>
+    </TopNav>
   );
 };
 

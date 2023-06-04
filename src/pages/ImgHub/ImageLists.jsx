@@ -6,6 +6,7 @@ import axios from "axios";
 import { HiViewfinderCircle } from "react-icons/hi2";
 import { RxCross1 } from "react-icons/rx";
 import { API } from "../../utils/API";
+import TopNav from "../../components/TopNav/TopNav";
 
 const ImageLists = () => {
   const { id } = useParams();
@@ -38,17 +39,10 @@ const ImageLists = () => {
   };
 
   return (
-    <div className=" w-full mx-auto mt-14">
-      <nav className="flex items-center justify-between bg-white w-full p-3 shadow-md absolute top-0">
-        <Link to="/image_hub">
-          <MdOutlineArrowBackIosNew size={20} />
-        </Link>
-        <p>{getLists?.collectionName}</p>
-        <BiSearch size={20} />
-      </nav>
+    <TopNav routeLink={'/image_hub'} barTitle={getLists.collectionName}>
 
       {/* DISPLAY COLLECTIONS LISTS START*/}
-      <div className="  w-full overflow-y-scroll">
+      <div className="  w-full overflow-y-scroll mt-14">
         <div className="grid grid-cols-2 p-2 gap-3 w-full h-fit rounded-xl overflow-hidden">
           {getLists?.photos?.map((x) => (
             <div
@@ -98,7 +92,7 @@ const ImageLists = () => {
           </div>
         </div>
       )}
-    </div>
+  </TopNav>
   );
 };
 
