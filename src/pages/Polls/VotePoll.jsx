@@ -95,7 +95,7 @@ const VotePoll = () => {
               return (
                 <div
                   key={index}
-                  className="flex space-y-5 items-center justify-between"
+                  className="flex space-y-4 items-center justify-between"
                 >
                   <div className="flex items-center flex-row gap-2">
                     <IoMdCheckmarkCircle
