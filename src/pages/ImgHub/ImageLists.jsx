@@ -31,8 +31,14 @@ const ImageLists = () => {
     fetchData();
   }, [id]);
 
-  console.log(getLists);
-
+  useEffect(() => {
+    // Add event listener to disable scrolling when the image model is open
+    if (selectedImage) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [selectedImage]);
 
   const handleImageModel = (image) => {
     setSelectedImage(image);
@@ -42,7 +48,7 @@ const ImageLists = () => {
     <TopNav routeLink={'/image_hub'} barTitle={getLists.collectionName}>
 
       {/* DISPLAY COLLECTIONS LISTS START*/}
-      <div className="  w-full overflow-y-scroll mt-1">
+      <div className=" relative w-full overflow-y-scroll mt-1">
         <div className="grid grid-cols-2 p-2 gap-3 w-full h-fit rounded-xl overflow-hidden">
           {getLists?.photos?.map((x) => (
             <div
@@ -50,9 +56,10 @@ const ImageLists = () => {
               className=" flex-wrap relative flex items-center justify-center flex-col"
             >
               <img
-                className="border border-gray-200 w-full h-[130px] rounded-sm overflow-hidden object-contain"
+                className="border border-gray-200 w-full h-[130px] rounded-sm overflow-hidden object-contain cursor-pointer"
                 src={x.url}
                 alt={x.name}
+                onClick={() => handleImageModel(x)}
               />
               <div className="w-full flex-wrap overflow-hidden flex items-center justify-between">
                 <p className="  overflow-hidden text-center text-[11px] p-1 px-2">
@@ -76,7 +83,7 @@ const ImageLists = () => {
 
       {/* Image Popup Model */}
       {selectedImage && (
-        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-40">
+        <div className="absolute top-0 left-0 w-full min-h-full flex items-center justify-center bg-black bg-opacity-60">
           <div className="relative max-w-3xl max-h-full w-full h-auto">
             <img
               className="object-contain max-w-full max-h-full"
@@ -92,7 +99,7 @@ const ImageLists = () => {
           </div>
         </div>
       )}
-  </TopNav>
+    </TopNav>
   );
 };
 

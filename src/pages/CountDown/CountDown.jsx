@@ -85,9 +85,12 @@ const CountDown = () => {
           </p>
         </div>
         <div className="mt-3 flex items-center justify-center">
-          <button className="bg-gray-200 text-[1rem] text-[#f79489] p-2 px-7 rounded-3xl active:scale-95">
+          <Link
+            to="/events"
+            className="bg-gray-200 text-[1rem] text-[#f79489] p-2 px-7 rounded-3xl active:scale-95"
+          >
             Events
-          </button>
+          </Link>
         </div>
       </div>
     </TopNav>

@@ -6,9 +6,11 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { API } from "../../utils/API";
 import TopNav from "../../components/TopNav/TopNav";
+// import VideoGallery from './VideoGallery';
 
 const VideoGallery = () => {
-  const [vidCollections, setvidCollections] = useState([]);
+  const [imgCollections, setImgCollections] = useState([]);
+  const storedType = localStorage.getItem("type");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,8 +20,20 @@ const VideoGallery = () => {
           `${API}/api/auth/get-video-collection?authId=${storedPath}`
         );
         const data = response.data;
-        setvidCollections(data);
-        console.log(data);
+
+        // Filter data based on inviteType and storedType
+        let filteredData = [];
+        if (storedType === "general") {
+          filteredData = data.details;
+        } else {
+          filteredData = data.details.filter(
+            (collection) => collection.inviteType === storedType
+          );
+        }
+
+        setImgCollections(filteredData);
+        console.log(filteredData);
+        console.log(storedType);
       } catch (error) {
         console.error(error);
       }
@@ -31,23 +45,21 @@ const VideoGallery = () => {
   return (
     <TopNav routeLink={"/"} barTitle={"Video Gallery"}>
       {/* DISPLAY COLLECTIONS START*/}
-      <div className=" w-full grid grid-cols-2 p-2 gap-3 overflow-y-scroll mt-1">
-        {vidCollections?.details?.map((i) => (
+      <div className="w-full grid grid-cols-2 p-2 gap-3 overflow-y-scroll mt-1">
+        {imgCollections?.map((x) => (
           <div
-            key={i._id}
-            className=" flex flex-col items-center w-full h-fit rounded-xl overflow-hidden"
+            key={x._id}
+            className="flex flex-col items-center w-full h-fit rounded-xl overflow-hidden"
           >
-            <Link to={`/video_gallery/videos/${i._id}`}>
+            <Link to={`/video_gallery/videos/${x._id}`}>
               <img
-                className="  w-[140px] h-[140px] rounded-xl overflow-hidden object-cover active:scale-95"
-                //   src={x.photos[0].url}
+                className="w-[140px] h-[140px] rounded-xl overflow-hidden object-cover active:scale-95"
+                // src={x.photos[0].url}
                 src="https://i.postimg.cc/0jhx5pxW/ajhdgkdc.jpg"
                 alt=""
               />
             </Link>
-            <p className=" text-center text-[13px] p-1">
-              {i.VideoCollectionName}
-            </p>
+            <p className="text-center text-[13px] p-1">{x.VideoCollectionName}</p>
           </div>
         ))}
       </div>

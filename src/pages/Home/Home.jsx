@@ -56,7 +56,11 @@ const iconsData = [
   },
   {
     id: 5,
-    icon: <SlCalender size={28} className="text-[#F79489]" />,
+    icon: (
+      <Link to="/events">
+        <SlCalender size={28} className="text-[#F79489]" />
+      </Link>
+    ),
     name: "Calendar",
   },
   {
@@ -79,11 +83,13 @@ const iconsData = [
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const path = location.pathname.split("/")[2];
+  const path = location.pathname.split("/")[3];
+  const type = location.pathname.split("/")[2];
 
   useEffect(() => {
     localStorage.setItem("path", path);
-  }, [path]);
+    localStorage.setItem("type", type);
+  }, [path, type]);
 
   useEffect(() => {
     const storedPath = localStorage.getItem("path");
