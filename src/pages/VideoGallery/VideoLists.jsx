@@ -22,7 +22,7 @@ const VideoLists = () => {
         const data = response.data;
         console.log(data);
         setGetLists(data?.details);
-        // Use the fetched data for the collection
+
       } catch (error) {
         console.error(error);
       }
@@ -38,7 +38,10 @@ const VideoLists = () => {
   };
 
   return (
-    <TopNav routeLink={"/video_gallery"} barTitle={getLists.VideoCollectionName}>
+    <TopNav
+      routeLink={"/video_gallery"}
+      barTitle={getLists.VideoCollectionName}
+    >
       {/* DISPLAY COLLECTIONS LISTS START*/}
       <div className="  w-full overflow-y-scroll mt-1">
         <div className="grid grid-cols-2 p-2 gap-3 w-full h-fit rounded-xl overflow-hidden">
