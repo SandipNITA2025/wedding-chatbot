@@ -97,7 +97,7 @@ const VotePoll = () => {
                       className={`${
                         submit && getPoll.submittedOptionIndex === index
                           ? "text-green-400 cursor-pointer"
-                          : "text-gray-300 cursor-pointer"
+                          : "text-white bg-white border border-gray-400 rounded-full cursor-pointer p-0 w-[1.1rem] h-[1.1rem]"
                       }`}
                     />
                     <p className="text-[#F7998E]">{option.text}</p>
