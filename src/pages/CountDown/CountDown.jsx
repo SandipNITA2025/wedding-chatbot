@@ -21,7 +21,7 @@ const CountDown = () => {
       .get(`${API}/api/mergedetails?authId=${storedPath}`)
       .then((response) => {
         setDetails(response.data);
-        console.log(response.data);
+        // console.log(response.data);
         if (
           response.data.mergedData &&
           response.data.mergedData[0] &&

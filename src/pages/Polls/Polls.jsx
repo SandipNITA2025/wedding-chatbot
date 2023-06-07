@@ -18,7 +18,7 @@ const Polls = () => {
         );
         const data = response.data;
         setGetPolls(data);
-        console.log(data);
+        // console.log(data);
       } catch (error) {
         console.error(error);
       }

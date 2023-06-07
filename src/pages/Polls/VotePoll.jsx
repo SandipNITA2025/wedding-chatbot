@@ -18,7 +18,7 @@ const VotePoll = () => {
     try {
       const response = await axios.get(`${API}/api/auth/get-polls/${id}`);
       const data = response.data;
-      console.log(data);
+      // console.log(data);
       setGetPoll(data?.details);
     } catch (error) {
       console.error(error);
@@ -55,7 +55,7 @@ const VotePoll = () => {
     }
   };
 
-  console.log(getPoll);
+  // console.log(getPoll);
 
   const getTotalVotes = (poll) => {
     let totalVotes = 0;

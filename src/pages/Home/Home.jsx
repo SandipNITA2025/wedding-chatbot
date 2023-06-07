@@ -76,7 +76,11 @@ const iconsData = [
 
   {
     id: 7,
-    icon: <AiOutlineGift size={32} className="text-[#F79489]" />,
+    icon: (
+      <Link to="/gift_registry">
+        <AiOutlineGift size={32} className="text-[#F79489]" />
+      </Link>
+    ),
     name: "Gift Registry",
   },
 ];
@@ -93,7 +97,7 @@ const Home = () => {
 
   useEffect(() => {
     const storedPath = localStorage.getItem("path");
-    console.log(storedPath);
+    // console.log(storedPath);
   }, []);
 
   return (

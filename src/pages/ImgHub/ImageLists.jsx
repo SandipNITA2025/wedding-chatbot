@@ -19,7 +19,7 @@ const ImageLists = () => {
           `${API}/api/auth/get-collection/${id}`
         );
         const data = response.data;
-        console.log(data);
+        // console.log(data);
         setGetLists(data?.details);
       } catch (error) {
         console.error(error);
@@ -48,7 +48,7 @@ const ImageLists = () => {
         <div className="grid grid-cols-2 p-2 gap-3 w-full h-fit rounded-xl overflow-hidden">
           {getLists?.photos?.map((x) => (
             <div
-              key={x.id}
+              key={x._id}
               className=" flex-wrap relative flex items-center justify-center flex-col"
             >
               <img

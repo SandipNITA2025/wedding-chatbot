@@ -32,8 +32,8 @@ const VideoGallery = () => {
         }
 
         setImgCollections(filteredData);
-        console.log(filteredData);
-        console.log(storedType);
+        // console.log(filteredData);
+        // console.log(storedType);
       } catch (error) {
         console.error(error);
       }

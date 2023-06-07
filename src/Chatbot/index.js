@@ -107,7 +107,7 @@ const ChatBotHelper = () => {
       .get(`${API}/api/mergedetails?authId=${storedPath}`)
       .then((response) => {
         setDetails(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
         console.error("Error:", error);

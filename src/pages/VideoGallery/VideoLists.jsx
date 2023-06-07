@@ -20,7 +20,7 @@ const VideoLists = () => {
           `${API}/api/auth/get-video-collection/${id}`
         );
         const data = response.data;
-        console.log(data);
+        // console.log(data);
         setGetLists(data?.details);
 
       } catch (error) {
@@ -31,7 +31,7 @@ const VideoLists = () => {
     fetchData();
   }, [id]);
 
-  console.log(getLists);
+  // console.log(getLists);
 
   const handleImageModel = (image) => {
     setSelectedImage(image);
@@ -47,7 +47,7 @@ const VideoLists = () => {
         <div className="grid grid-cols-2 p-2 gap-3 w-full h-fit rounded-xl overflow-hidden">
           {getLists?.videos?.map((x) => (
             <div
-              key={x.id}
+              key={x._id}
               className=" flex-wrap relative flex items-center justify-center flex-col"
             >
               <video

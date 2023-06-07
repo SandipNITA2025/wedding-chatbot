@@ -3,6 +3,7 @@ import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import ChatBotHelper from "./Chatbot";
 import CountDown from "./pages/CountDown/CountDown";
 import Events from "./pages/CountDown/Events";
+import GiftRegistry from "./pages/GiftRegistry/GiftRegistry";
 import Home from "./pages/Home/Home";
 import ImageHub from "./pages/ImgHub/ImageHub";
 import ImageLists from "./pages/ImgHub/ImageLists";
@@ -21,7 +22,7 @@ const App = () => {
     if (location.pathname === "/") {
       navigate(`/file/${storedType}/${storedPath}`);
     }
-  }, [location.pathname, navigate]);
+  }, [location.pathname, navigate, storedType]);
 
   return (
     <div className="relative flex items-center justify-center w-screen mx-auto h-screen">
@@ -40,7 +41,10 @@ const App = () => {
           <Route path="/poll/:id" element={<VotePoll />} />
           {/* Count Down */}
           <Route path="/count_down" element={<CountDown />} />
+          {/* Calender */}
           <Route path="/events" element={<Events />} />
+          {/* Gift Registry */}
+          <Route path="/gift_registry" element={<GiftRegistry />} />
         </Routes>
 
         <ChatBotHelper />

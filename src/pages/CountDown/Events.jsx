@@ -17,7 +17,7 @@ const Events = () => {
         );
         const data = response.data;
         setDetails(data);
-        console.log(data);
+        // console.log(data);
       } catch (error) {
         console.error(error);
       }
