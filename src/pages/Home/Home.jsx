@@ -112,9 +112,9 @@ const Home = () => {
 
       <div className=" w-full h-full flex items-center justify-center">
         <div className=" w-[90%] text-black bg-white shadow-md h-[400px] grid grid-cols-3 place-items-center align-bottom gap-1 p-3 py-5 mb-3">
-          {iconsData.map((i) => (
+          {iconsData.map((i, ind) => (
             <div
-              key={i.id}
+              key={ind}
               className=" min-w-[60px] cursor-pointer active:scale-95  items-center justify-center flex flex-col space-y-1"
             >
               {i.icon}

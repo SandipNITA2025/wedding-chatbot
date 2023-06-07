@@ -7,7 +7,7 @@ import { API } from "../utils/API";
 
 const BotImage = ({ Imgurl }) => {
   if (!Imgurl) {
-    return <div className="imagebox">NO PHOTO</div>;
+    return <div className="imagebox">NO PHOTO AVAILABLE</div>;
   }
 
   return (
@@ -101,13 +101,11 @@ const ChatBotHelper = () => {
 
   useEffect(() => {
     const storedPath = localStorage.getItem("path");
-    // console.log(storedPath);
 
     axios
       .get(`${API}/api/mergedetails?authId=${storedPath}`)
       .then((response) => {
         setDetails(response.data);
-        // console.log(response.data);
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -118,7 +116,7 @@ const ChatBotHelper = () => {
   }, []);
 
   useEffect(() => {
-    if (details?.mergedData) {
+    if (details?.mergedData && details.mergedData.length > 0) {
       const messages = details?.mergedData[0]?.messages;
       setConversation(messages);
       const photos = details?.mergedData[0]?.eventDetails?.photos;
@@ -126,39 +124,37 @@ const ChatBotHelper = () => {
     }
   }, [details.mergedData]);
 
+  if (loading) {
+    return <div>Loading...</div>
+  }
+
+  if (details?.mergedData?.length === 0) {
+    return <div></div>;
+  }
+
   //URLS START:
-  const photoUrl = details?.mergedData
-    ? details.mergedData[0].photo?.url
-    : null;
+  const photoUrl = details?.mergedData && details.mergedData[0]?.photo?.url;
 
-  const venue = details?.mergedData
-    ? details.mergedData[0].eventDetails.venue
-    : null;
-  const locationUrl = details?.mergedData
-    ? details.mergedData[0].eventDetails.location
-    : null;
-
-  const date = details?.mergedData
-    ? details.mergedData[0].eventDetails.date
-    : null;
-  const time = details?.mergedData
-    ? details.mergedData[0].eventDetails.time
-    : null;
+  const venue = details?.mergedData?.[0]?.eventDetails?.venue || "";
+  const locationUrl = details?.mergedData?.[0]?.eventDetails?.location || "";
+  const date = details?.mergedData?.[0]?.eventDetails?.date || "";
+  const time = details?.mergedData?.[0]?.eventDetails?.time || "";
 
   //URLS END:
 
   const steps = [
     {
-      id: "start",
+      id: "1",
       message: "Hi, There! 👋",
       trigger: "2",
     },
     // dynamic msg
-    ...conversation.map((msg, index) => ({
+    ...(conversation || []).map((msg, index) => ({
       id: String(index + 2),
       message: msg,
       trigger: String(index + 3),
     })),
+
     {
       id: String(conversation.length + 2),
       component: photoUrl ? (
