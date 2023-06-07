@@ -44,7 +44,7 @@ const Polls = () => {
         {getPolls.map((x) => (
           <div
             key={x._id}
-            className=" flex flex-col items-center justify-center w-full h-[150px] bg-[#F7998E] rounded-md overflow-hidden p-2"
+            className=" flex flex-col items-center justify-center w-full min-h-[150px] bg-[#F7998E] rounded-md overflow-hidden p-2"
           >
             <p className="text-white text-[.9rem]">{x.question}</p>
             <div className=" flex items-center flex-col mt-1">

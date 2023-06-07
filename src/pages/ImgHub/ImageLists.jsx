@@ -58,11 +58,11 @@ const ImageLists = () => {
                 onClick={() => handleImageModel(x)}
               />
               <div className="w-full flex-wrap overflow-hidden flex items-center justify-between">
-                <p className="  overflow-hidden text-center text-[11px] p-1 px-2">
+                <p className=" w-[60%]  overflow-hidden text-ellipsis whitespace-nowrap text-center text-[11px] p-1 px-2">
                   {x.name}
                 </p>
                 <p className=" overflow-hidden text-center text-[11px] p-1 px-2">
-                  {`${(x.size / (1024 * 1024)).toFixed(2)} mb`}
+                  {`${(x.size / (1024 * 1024)).toFixed(2)} MB`}
                 </p>
               </div>
               <button

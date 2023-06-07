@@ -54,7 +54,7 @@ const VideoLists = () => {
                 onClick={() => handleImageModel(x)}
               />
               <div className="w-full flex-wrap overflow-hidden flex items-center justify-between">
-                <p className="  overflow-hidden text-center text-[11px] p-1 px-2">
+                <p className="  overflow-hidden text-ellipsis whitespace-nowrap text-center text-[11px] p-1 px-2">
                   {x.name}
                 </p>
                 {/* <p className=" overflow-hidden text-center text-[11px] p-1 px-2">
@@ -79,7 +79,7 @@ const VideoLists = () => {
           <div className="relative max-w-3xl max-h-full w-full h-auto">
             <video
               controls
-              className="object-contain w-full max-h-[400px]"
+              className="object-contain w-full max-h-[380px]"
               src={selectedImage.url}
               alt={selectedImage.name}
             />
