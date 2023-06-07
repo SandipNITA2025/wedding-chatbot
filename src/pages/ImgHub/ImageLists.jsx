@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { MdOutlineArrowBackIosNew } from "react-icons/md";
-import { BiSearch } from "react-icons/bi";
-import { Link, useParams } from "react-router-dom";
+
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { HiViewfinderCircle } from "react-icons/hi2";
 import { RxCross1 } from "react-icons/rx";
@@ -22,7 +21,6 @@ const ImageLists = () => {
         const data = response.data;
         console.log(data);
         setGetLists(data?.details);
-        // Use the fetched data for the collection
       } catch (error) {
         console.error(error);
       }
@@ -32,7 +30,6 @@ const ImageLists = () => {
   }, [id]);
 
   useEffect(() => {
-    // Add event listener to disable scrolling when the image model is open
     if (selectedImage) {
       document.body.style.overflow = "hidden";
     } else {
@@ -45,8 +42,7 @@ const ImageLists = () => {
   };
 
   return (
-    <TopNav routeLink={'/image_hub'} barTitle={getLists.collectionName}>
-
+    <TopNav routeLink={"/image_hub"} barTitle={getLists.collectionName}>
       {/* DISPLAY COLLECTIONS LISTS START*/}
       <div className=" relative w-full overflow-y-scroll mt-1">
         <div className="grid grid-cols-2 p-2 gap-3 w-full h-fit rounded-xl overflow-hidden">
@@ -91,10 +87,10 @@ const ImageLists = () => {
               alt={selectedImage.name}
             />
             <button
-              className="absolute top-2 right-2 text-gray-900 font-medium"
+              className=" active:scale-95 absolute p-1 bg-red-400 text-white rounded-full top-2 right-2  font-medium"
               onClick={() => setSelectedImage(null)}
             >
-              <RxCross1 size={20} />
+              <RxCross1 size={12} />
             </button>
           </div>
         </div>

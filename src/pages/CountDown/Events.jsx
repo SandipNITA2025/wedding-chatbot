@@ -47,12 +47,12 @@ const Events = () => {
             key={index}
             className="box w-full min-h-[50px]  flex items-center"
           >
-            <div className="left w-full flex-[2.2] px-2">
-              <p className="text-[12px]">{formatDate(data.eventDate)}</p>
-              <p className="text-[11px] text-[#F79489]">
+            <div className="left w-full flex-[2.5] px-2">
+              <p className="text-[13px]">{formatDate(data.eventDate)}</p>
+              <p className="text-[12px] text-[#F79489]">
                 {formatDay(data.eventDate)}, {data.eventTime}
               </p>
-              <p className="text-[8px] flex items-center">
+              <p className="text-[10px] flex items-center ">
                 <MdLocationPin className="text-[#F79489]" />
                 <span>{data.eventLocation}</span>
               </p>
@@ -61,7 +61,7 @@ const Events = () => {
               <button
                 className={`${
                   index % 2 === 0 ? "bg-[#E7B6C7]" : "bg-[#F79489]"
-                } active:scale-95 w-full p-[13px] text-[14px] text-white`}
+                } active:scale-95 w-[95%] p-[13px] text-[14px] text-white`}
               >
                 {data.eventName}
               </button>

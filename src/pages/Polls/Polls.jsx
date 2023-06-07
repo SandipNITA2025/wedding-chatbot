@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AiFillLike } from "react-icons/ai";
 
-import { MdOutlineArrowBackIosNew } from "react-icons/md";
-import { BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { API } from "../../utils/API";
@@ -42,7 +40,7 @@ const Polls = () => {
     <TopNav routeLink={'/'} barTitle={"Polls"}>
 
       {/* DISPLAY POLLS START*/}
-      <div className=" w-full grid grid-cols-2 p-2 gap-3 overflow-y-scroll mt-1">
+      <div className=" w-full grid grid-cols-2 grid-rows-2 p-2 gap-3 overflow-y-scroll mt-1">
         {getPolls.map((x) => (
           <div
             key={x._id}

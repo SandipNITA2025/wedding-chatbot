@@ -48,9 +48,10 @@ const VideoLists = () => {
               className=" flex-wrap relative flex items-center justify-center flex-col"
             >
               <video
-                className="border border-gray-200 w-full h-[130px] rounded-sm overflow-hidden object-contain"
+                className="border border-gray-200 w-full h-[130px] rounded-sm overflow-hidden cursor-pointer object-contain"
                 src={x.url}
                 alt={x.name}
+                onClick={() => handleImageModel(x)}
               />
               <div className="w-full flex-wrap overflow-hidden flex items-center justify-between">
                 <p className="  overflow-hidden text-center text-[11px] p-1 px-2">
@@ -74,7 +75,7 @@ const VideoLists = () => {
 
       {/* Image Popup Model */}
       {selectedImage && (
-        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-40">
+        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-60">
           <div className="relative max-w-3xl max-h-full w-full h-auto">
             <video
               controls
@@ -83,10 +84,10 @@ const VideoLists = () => {
               alt={selectedImage.name}
             />
             <button
-              className="absolute top-2 right-2 text-gray-900 font-medium"
+              className=" active:scale-95 absolute p-1 bg-red-400 text-white rounded-full top-2 right-2  font-medium"
               onClick={() => setSelectedImage(null)}
             >
-              <RxCross1 size={20} />
+              <RxCross1 size={12} />
             </button>
           </div>
         </div>

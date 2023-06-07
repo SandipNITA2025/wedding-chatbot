@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import { MdOutlineArrowBackIosNew } from "react-icons/md";
-import { BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { API } from "../../utils/API";
@@ -39,7 +37,7 @@ const ImageHub = () => {
     };
 
     fetchData();
-  }, []);
+  }, [storedType]);
 
   return (
     <TopNav routeLink={"/"} barTitle={"Image Hub"}>
