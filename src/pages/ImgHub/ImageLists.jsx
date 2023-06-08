@@ -74,27 +74,26 @@ const ImageLists = () => {
             </div>
           ))}
         </div>
+        {/* Image Popup Model */}
+        {selectedImage && (
+          <div className="fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]  w-[329px] h-[560px] sm:w-full sm:h-full  rounded-md flex items-center justify-center bg-black bg-opacity-60">
+            <div className="relative max-w-3xl max-h-full w-full h-auto">
+              <img
+                className="object-contain w-full max-h-[380px]"
+                src={selectedImage.url}
+                alt={selectedImage.name}
+              />
+              <button
+                className=" active:scale-95 absolute p-1 bg-red-400 text-white rounded-full -top-7 right-2  font-medium"
+                onClick={() => setSelectedImage(null)}
+              >
+                <RxCross1 size={12} />
+              </button>
+            </div>
+          </div>
+        )}
       </div>
       {/* DISPLAY COLLECTIONS LISTS END*/}
-
-      {/* Image Popup Model */}
-      {selectedImage && (
-        <div className="absolute top-0 left-0 w-full min-h-full flex items-center justify-center bg-black bg-opacity-60">
-          <div className="relative max-w-3xl max-h-full w-full h-auto">
-            <img
-              className="object-contain max-w-full max-h-full"
-              src={selectedImage.url}
-              alt={selectedImage.name}
-            />
-            <button
-              className=" active:scale-95 absolute p-1 bg-red-400 text-white rounded-full top-2 right-2  font-medium"
-              onClick={() => setSelectedImage(null)}
-            >
-              <RxCross1 size={12} />
-            </button>
-          </div>
-        </div>
-      )}
     </TopNav>
   );
 };

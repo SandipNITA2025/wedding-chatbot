@@ -1,6 +1,6 @@
 import React from "react";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
-import { BiSearch } from "react-icons/bi";
+import { BiSearch, BiHomeSmile, BiHomeAlt2 } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
 const TopNav = ({ children, routeLink, barTitle }) => {
@@ -11,7 +11,9 @@ const TopNav = ({ children, routeLink, barTitle }) => {
           <MdOutlineArrowBackIosNew size={20} />
         </Link>
         <p className=" text-[1.1rem]">{barTitle}</p>
-        <BiSearch size={20} />
+        <Link to="/">
+          <BiHomeAlt2 size={20} />
+        </Link>
       </nav>
       {children}
     </div>

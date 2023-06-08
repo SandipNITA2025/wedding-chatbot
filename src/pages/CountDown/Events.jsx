@@ -3,6 +3,7 @@ import TopNav from "../../components/TopNav/TopNav";
 import { MdLocationPin } from "react-icons/md";
 import axios from "axios";
 import { API } from "./../../utils/API";
+import { Link } from "react-router-dom";
 
 const Events = () => {
   const [details, setDetails] = useState([]);
@@ -48,20 +49,28 @@ const Events = () => {
             className="box w-full min-h-[50px]  flex items-center"
           >
             <div className="left w-full flex-[2.5] px-2">
-              <p className="text-[13px]">{formatDate(data.eventDate)}</p>
+              <p className="text-[14px]">{formatDate(data.eventDate)}</p>
               <p className="text-[12px] text-[#F79489]">
                 {formatDay(data.eventDate)}, {data.eventTime}
               </p>
-              <p className="text-[10px] flex items-center ">
-                <MdLocationPin className="text-[#F79489]" />
-                <span>{data.eventLocation}</span>
+              <p className= " overflow-hidden text-ellipsis whitespace-nowrap text-[11px] flex items-center">
+                <MdLocationPin size={13} className="text-[#F79489]" />
+                <Link
+                  to={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                    data.eventLocation
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {data.eventLocation}
+                </Link>
               </p>
             </div>
             <div className="right w-full flex-[3]">
               <button
                 className={`${
                   index % 2 === 0 ? "bg-[#E7B6C7]" : "bg-[#F79489]"
-                } active:scale-95 w-[95%] p-[13px] text-[14px] text-white`}
+                } active:scale-95 w-[95%] p-[14px] text-[14px] text-white`}
               >
                 {data.eventName}
               </button>

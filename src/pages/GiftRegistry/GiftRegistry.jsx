@@ -1,22 +1,24 @@
 import React from "react";
 import TopNav from "../../components/TopNav/TopNav";
 import { BsClipboard2CheckFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import { API } from "../../utils/API";
 import { useState } from "react";
 import { useEffect } from "react";
+import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import { FiCircle } from "react-icons/fi";
 
 const GiftRegistry = () => {
   const [details, setDetails] = useState([]);
   const [loading, setLoading] = useState(true);
 
+
   useEffect(() => {
     const storedPath = localStorage.getItem("path");
-    // console.log(API);
+
 
     axios
-      .get(`${API}/api/auth//get-giftlists?authId=${storedPath}`)
+      .get(`${API}/api/auth/get-giftlists?authId=${storedPath}`)
       .then((response) => {
         setDetails(response.data);
         // console.log(response.data);
@@ -27,7 +29,56 @@ const GiftRegistry = () => {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [details]);
+
+  const giftUpdateTrue = (id) => {
+
+      axios
+        .put(`${API}/api/auth/giftlists/${id}/gift`, { receivedGift: true })
+        .then((response) => {
+          // Retrieve receivedGift from details state
+          const updatedDetails = details.map((item) => {
+            if (item._id === id) {
+              return {
+                ...item,
+                receivedGift: true,
+              };
+            }
+            return item;
+          });
+          setDetails(updatedDetails);
+        })
+        .catch((error) => {
+
+          console.error("Error:", error);
+        });
+
+  };
+  const giftUpdateFalse = (id) => {
+ 
+      axios
+        .put(`${API}/api/auth/giftlists/${id}/gift`, { receivedGift: false })
+        .then((response) => {
+          // Retrieve receivedGift from details state
+          const updatedDetails = details.map((item) => {
+            if (item._id === id) {
+              return {
+                ...item,
+                receivedGift: false,
+              };
+            }
+            return item;
+          });
+          setDetails(updatedDetails);
+
+        })
+        .catch((error) => {
+
+          console.error("Error:", error);
+        });
+
+  };
+
 
   return (
     <TopNav routeLink={"/"} barTitle={"Gift Registry"}>
@@ -60,7 +111,12 @@ const GiftRegistry = () => {
                 key={ind}
                 className="w-full h-fit pl-4 flex items-center gap-3"
               >
-                <button className=" w-4 h-4 bg-gray-300"></button>
+                {i?.receivedGift ? (
+                  <IoMdCheckmarkCircleOutline className=" cursor-pointer" onClick={() => giftUpdateFalse(i._id)}  size={20} />
+                ) : (
+                  <FiCircle className=" cursor-pointer" onClick={() => giftUpdateTrue(i._id)} size={19} />
+                )}
+
                 <p className=" text-[.9rem]">{i.giftName}</p>
               </div>
             ))}

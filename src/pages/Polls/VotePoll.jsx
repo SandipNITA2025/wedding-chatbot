@@ -5,14 +5,17 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { HiViewfinderCircle } from "react-icons/hi2";
 import { IoMdCheckmarkCircle } from "react-icons/io";
-// import { IoMdCheckmarkCircle } from 'react-icons/io5';
 import { API } from "../../utils/API";
 import TopNav from "../../components/TopNav/TopNav";
+
+import UseAnimations from "react-useanimations";
+import radioButton from "react-useanimations/lib/radioButton";
 
 const VotePoll = () => {
   const { id } = useParams();
   const [getPoll, setGetPoll] = useState([]);
   const [submit, setSubmit] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   const fetchData = async () => {
     try {
@@ -91,14 +94,15 @@ const VotePoll = () => {
                   className="flex space-y-4 items-center justify-between"
                 >
                   <div className="flex items-center flex-row gap-2">
-                    <IoMdCheckmarkCircle
-                      size={20}
-                      onClick={() => handleVote(getPoll?._id, index)}
-                      className={`${
-                        submit && getPoll.submittedOptionIndex === index
-                          ? "text-green-400 cursor-pointer"
-                          : "text-white bg-white border border-gray-400 rounded-full cursor-pointer p-0 w-[1.1rem] h-[1.1rem]"
-                      }`}
+                    <UseAnimations
+                      // reverse={checked}
+                      onClick={() => {
+                        setChecked(!checked);
+                        handleVote(getPoll?._id, index);
+                      }}
+                      size={24}
+                      wrapperStyle={{ marginTop: "5px" }}
+                      animation={radioButton}
                     />
                     <p className="text-[#F7998E]">{option.text}</p>
                   </div>

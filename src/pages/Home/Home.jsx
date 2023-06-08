@@ -11,7 +11,7 @@ import {
   AiOutlineGift,
 } from "react-icons/ai";
 
-import API from "../../utils/API";
+// import API from "../../utils/API";
 
 import { Link, useLocation } from "react-router-dom";
 
@@ -70,7 +70,11 @@ const iconsData = [
   },
   {
     id: 6,
-    icon: <RiPlayListLine size={30} className="text-[#F79489]" />,
+    icon: (
+      <Link to="/playlists">
+        <RiPlayListLine size={30} className="text-[#F79489]" />
+      </Link>
+    ),
     name: "Playlist",
   },
 
@@ -85,7 +89,7 @@ const iconsData = [
   },
 ];
 const Home = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const path = location.pathname.split("/")[3];
   const type = location.pathname.split("/")[2];
@@ -96,9 +100,11 @@ const Home = () => {
   }, [path, type]);
 
   useEffect(() => {
-    const storedPath = localStorage.getItem("path");
+    // const storedPath = localStorage.getItem("path");
     // console.log(storedPath);
   }, []);
+
+ 
 
   return (
     <div className="w-full h-full flex items-center justify-center flex-col">
@@ -111,7 +117,7 @@ const Home = () => {
       </div>
 
       <div className=" w-full h-full flex items-center justify-center">
-        <div className=" w-[90%] text-black bg-white shadow-md h-[400px] grid grid-cols-3 place-items-center align-bottom gap-1 p-3 py-5 mb-3">
+        <div className=" w-[90%] text-black bg-white shadow-md h-[400px] grid grid-cols-3 grid-rows-3 place-items-center align-bottom gap-1 p-3 py-5 mb-3">
           {iconsData.map((i, ind) => (
             <div
               key={ind}
