@@ -6,20 +6,24 @@ import { HiViewfinderCircle } from "react-icons/hi2";
 import { RxCross1 } from "react-icons/rx";
 import { API } from "../../utils/API";
 import TopNav from "../../components/TopNav/TopNav";
+import Loading from "../../components/Loading/Loading";
 
 const ImageLists = () => {
   const { id } = useParams();
   const [getLists, setGetLists] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setIsLoading(true)
         const response = await axios.get(
           `${API}/api/auth/get-collection/${id}`
         );
         const data = response.data;
         // console.log(data);
+        setIsLoading(false)
         setGetLists(data?.details);
       } catch (error) {
         console.error(error);
@@ -42,7 +46,11 @@ const ImageLists = () => {
   };
 
   return (
-    <TopNav routeLink={"/image_hub"} barTitle={getLists.collectionName}>
+    <>
+
+{isLoading ? (
+        <Loading />
+      ) : ( <TopNav routeLink={"/image_hub"} barTitle={getLists.collectionName}>
       {/* DISPLAY COLLECTIONS LISTS START*/}
       <div className=" relative w-full overflow-y-scroll mt-1">
         <div className="grid grid-cols-2 p-2 gap-3 w-full h-fit rounded-xl overflow-hidden">
@@ -94,7 +102,9 @@ const ImageLists = () => {
         )}
       </div>
       {/* DISPLAY COLLECTIONS LISTS END*/}
-    </TopNav>
+    </TopNav>)}
+   
+    </>
   );
 };
 
