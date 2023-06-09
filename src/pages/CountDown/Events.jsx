@@ -51,7 +51,7 @@ const Events = () => {
             className="box w-full min-h-[50px]  flex items-center"
           >
             <div className="left w-full flex-[2.5] px-2">
-              <p className="text-[14px]">{formatDate(data.eventDate)}</p>
+              <p className="text-[13px]">{formatDate(data.eventDate)}</p>
               <p className="text-[12px] text-[#F79489]">
                 {formatDay(data.eventDate)}, {data.eventTime}
               </p>
