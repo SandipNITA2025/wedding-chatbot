@@ -7,7 +7,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { FiCircle } from "react-icons/fi";
-import Loading from "../../components/Loading/Loading";
 
 const GiftRegistry = () => {
   const [details, setDetails] = useState([]);
@@ -71,9 +70,7 @@ const GiftRegistry = () => {
 
   return (
     <>
-      {isLoading ? (
-        <Loading />
-      ) : (
+     
         <TopNav routeLink={"/"} barTitle={"Gift Registry"}>
           <div className="w-full flex flex-col items-center justify-center p-2  overflow-y-scroll mt-1">
             <div className=" w-[90%] m-auto flex items-center justify-center flex-col">
@@ -125,7 +122,7 @@ const GiftRegistry = () => {
             </div>
           </div>
         </TopNav>
-      )}
+    
     </>
   );
 };

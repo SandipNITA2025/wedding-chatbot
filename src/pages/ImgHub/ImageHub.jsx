@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { API } from "../../utils/URL";
 import TopNav from "../../components/TopNav/TopNav";
-import Loading from "../../components/Loading/Loading";
 
 const ImageHub = () => {
   const [imgCollections, setImgCollections] = useState([]);
@@ -45,9 +44,6 @@ const ImageHub = () => {
 
   return (
     <>
-      {isLoading ? (
-        <Loading />
-      ) : (
         <TopNav routeLink={"/"} barTitle={"Image Hub"}>
           {/* DISPLAY COLLECTIONS START*/}
           <div className="w-full grid grid-cols-2 grid-rows-2 p-2 gap-3 overflow-y-scroll mt-1">
@@ -110,7 +106,7 @@ const ImageHub = () => {
           </div>
           {/* DISPLAY COLLECTIONS END*/}
         </TopNav>
-      )}
+    
     </>
   );
 };

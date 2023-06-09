@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import UseAnimations from "react-useanimations";
 // EVERY ANIMATION NEEDS TO BE IMPORTED FIRST -> YOUR BUNDLE WILL INCLUDE ONLY WHAT IT NEEDS
 import loading2 from "react-useanimations/lib/loading2";

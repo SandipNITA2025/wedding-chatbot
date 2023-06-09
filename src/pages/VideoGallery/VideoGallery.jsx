@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-
-import { MdOutlineArrowBackIosNew } from "react-icons/md";
-import { BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { API } from "../../utils/URL";
@@ -11,7 +8,6 @@ import { BsFillPlayCircleFill } from "react-icons/bs";
 const VideoGallery = () => {
   const [imgCollections, setImgCollections] = useState([]);
   const storedType = localStorage.getItem("type");
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -32,8 +28,6 @@ const VideoGallery = () => {
         }
 
         setImgCollections(filteredData);
-        // console.log(filteredData);
-        // console.log(storedType);
       } catch (error) {
         console.error(error);
       }
