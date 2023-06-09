@@ -47,14 +47,11 @@ const VideoGallery = () => {
           >
             <Link className="" to={`/video_gallery/videos/${i._id}`}>
               <img
-                className="w-[140px] h-[140px] rounded-xl overflow-hidden object-cover active:scale-95"
-                // src={x.photos[0].url}
-                src="https://i.postimg.cc/0jhx5pxW/ajhdgkdc.jpg"
+                className="w-[140px] object-contain rounded-md overflow-hidden  active:scale-95"
+                src="https://i.postimg.cc/Kcp05b8k/2478133361556860970-256.png"
                 alt=""
               />
-              <div className=" absolute z-[1]  translate-x-[-50%] translate-y-[-50%]  top-[-50%] left-[-50%]">
-              <BsFillPlayCircleFill  />
-              </div>
+              
             </Link>
             
             <p className="text-center text-[13px] p-1">

@@ -7,6 +7,7 @@ import { HiViewfinderCircle } from "react-icons/hi2";
 import { RxCross1 } from "react-icons/rx";
 import { API } from "../../utils/URL";
 import TopNav from "../../components/TopNav/TopNav";
+import {BsFillPlayCircleFill} from 'react-icons/bs'
 
 const VideoLists = () => {
   const { id } = useParams();
@@ -50,6 +51,7 @@ const VideoLists = () => {
               className=" flex-wrap relative flex items-center justify-center flex-col"
             >
               <video
+              
                 className="border border-gray-200 w-full h-[130px] rounded-sm overflow-hidden cursor-pointer object-contain"
                 src={x.url}
                 alt={x.name}
@@ -64,10 +66,10 @@ const VideoLists = () => {
                 </p> */}
               </div>
               <button
-                className=" absolute top-1 right-1 "
+                className=" absolute  flex items-center justify-center top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] right-1 "
                 onClick={() => handleImageModel(x)}
               >
-                <HiViewfinderCircle size={20} className=" text-gray-500" />
+                <BsFillPlayCircleFill size={30} className=" text-red-400" />
               </button>
             </div>
           ))}

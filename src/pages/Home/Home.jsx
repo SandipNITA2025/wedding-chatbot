@@ -11,12 +11,8 @@ import {
   AiOutlineGift,
 } from "react-icons/ai";
 
-// import API from "../../utils/API";
-
 import { Link, useLocation } from "react-router-dom";
-import Loading from "../../components/Loading/Loading";
 
-// const path = location.path
 
 const iconsData = [
   {
