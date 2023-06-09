@@ -3,7 +3,7 @@ import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { API } from "../../utils/API";
+import { API } from "../../utils/URL";
 import TopNav from "../../components/TopNav/TopNav";
 
 const CountDown = () => {

@@ -6,7 +6,7 @@ import loading2 from "react-useanimations/lib/loading2";
 
 const Loading = () => {
   return (
-    <div className="absolute top-0 bg-white flex items-center justify-center w-full h-full m-auto ">
+    <div className="absolute top-0 left-0 bg-white flex items-center justify-center w-full h-full m-auto ">
       <div>
         <UseAnimations
           size={40}

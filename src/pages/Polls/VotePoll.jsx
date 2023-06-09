@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { HiViewfinderCircle } from "react-icons/hi2";
 import { IoMdCheckmarkCircle } from "react-icons/io";
-import { API } from "../../utils/API";
+import { API } from "../../utils/URL";
 import TopNav from "../../components/TopNav/TopNav";
 
 import UseAnimations from "react-useanimations";

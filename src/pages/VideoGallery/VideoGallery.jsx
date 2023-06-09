@@ -4,9 +4,9 @@ import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { API } from "../../utils/API";
+import { API } from "../../utils/URL";
 import TopNav from "../../components/TopNav/TopNav";
-// import VideoGallery from './VideoGallery';
+import { BsFillPlayCircleFill } from "react-icons/bs";
 
 const VideoGallery = () => {
   const [imgCollections, setImgCollections] = useState([]);
@@ -46,20 +46,26 @@ const VideoGallery = () => {
     <TopNav routeLink={"/"} barTitle={"Video Gallery"}>
       {/* DISPLAY COLLECTIONS START*/}
       <div className="w-full grid grid-cols-2 p-2 gap-3 overflow-y-scroll mt-1">
-        {imgCollections?.map((x) => (
+        {imgCollections?.map((i) => (
           <div
-            key={x._id}
-            className="flex flex-col items-center w-full h-fit rounded-xl overflow-hidden"
+            key={i._id}
+            className="relative flex flex-col items-center w-full h-fit rounded-xl overflow-hidden"
           >
-            <Link to={`/video_gallery/videos/${x._id}`}>
+            <Link className="" to={`/video_gallery/videos/${i._id}`}>
               <img
                 className="w-[140px] h-[140px] rounded-xl overflow-hidden object-cover active:scale-95"
                 // src={x.photos[0].url}
                 src="https://i.postimg.cc/0jhx5pxW/ajhdgkdc.jpg"
                 alt=""
               />
+              <div className=" absolute z-[1]  translate-x-[-50%] translate-y-[-50%]  top-[-50%] left-[-50%]">
+              <BsFillPlayCircleFill  />
+              </div>
             </Link>
-            <p className="text-center text-[13px] p-1">{x.VideoCollectionName}</p>
+            
+            <p className="text-center text-[13px] p-1">
+              {i.VideoCollectionName}
+            </p>
           </div>
         ))}
       </div>

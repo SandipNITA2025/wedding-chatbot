@@ -3,7 +3,7 @@ import ChatBot from "react-simple-chatbot";
 import PropTypes from "prop-types";
 import { ThemeProvider } from "styled-components";
 import axios from "axios";
-import { API } from "../utils/API";
+import { API } from "../utils/URL";
 
 const BotImage = ({ Imgurl }) => {
   if (!Imgurl) {

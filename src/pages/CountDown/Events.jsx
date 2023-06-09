@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import TopNav from "../../components/TopNav/TopNav";
 import { MdLocationPin } from "react-icons/md";
 import axios from "axios";
-import { API } from "../../utils/API";
+import { API } from "../../utils/URL";
 import { Link } from "react-router-dom";
 
 const Events = () => {
@@ -48,9 +48,9 @@ const Events = () => {
         {details?.[0]?.events?.map((data, index) => (
           <div
             key={index}
-            className="box w-full min-h-[50px]  flex items-center"
+            className="box w-full h-[50px] hover:bg-gray-50  overflow-hidden  flex items-center"
           >
-            <div className="left w-full flex-[2.5] px-2">
+            <div className="left  w-full flex-[2.5] px-2">
               <p className="text-[13px]">{formatDate(data.eventDate)}</p>
               <p className="text-[12px] text-[#F79489]">
                 {formatDay(data.eventDate)}, {data.eventTime}

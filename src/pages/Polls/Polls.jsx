@@ -3,7 +3,7 @@ import { AiFillLike } from "react-icons/ai";
 
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { API } from "../../utils/API";
+import { API } from "../../utils/URL";
 import TopNav from "../../components/TopNav/TopNav";
 
 const Polls = () => {

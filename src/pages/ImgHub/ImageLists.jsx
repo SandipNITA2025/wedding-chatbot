@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { HiViewfinderCircle } from "react-icons/hi2";
 import { RxCross1 } from "react-icons/rx";
-import { API } from "../../utils/API";
+import { API } from "../../utils/URL";
 import TopNav from "../../components/TopNav/TopNav";
 import Loading from "../../components/Loading/Loading";
 

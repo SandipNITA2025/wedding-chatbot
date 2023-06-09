@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import TopNav from "../../components/TopNav/TopNav";
 // import Playlist from './Playlist';
 import { BsMusicNoteList, BsSpotify } from "react-icons/bs";
-import { API } from "../../utils/API";
+import { API } from "../../utils/URL";
 import axios from "axios";
 import { Link } from "react-router-dom";
 

@@ -2,7 +2,7 @@ import React from "react";
 import TopNav from "../../components/TopNav/TopNav";
 import { BsClipboard2CheckFill } from "react-icons/bs";
 import axios from "axios";
-import { API } from "../../utils/API";
+import { API } from "../../utils/URL";
 import { useState } from "react";
 import { useEffect } from "react";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
