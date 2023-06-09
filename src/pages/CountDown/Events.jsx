@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import TopNav from "../../components/TopNav/TopNav";
 import { MdLocationPin } from "react-icons/md";
 import axios from "axios";
-import { API } from "./../../utils/API";
+import { API } from "../../utils/API";
 import { Link } from "react-router-dom";
 
 const Events = () => {
-  const [details, setDetails] = useState([]);
+  const [details, setDetails] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -17,8 +17,8 @@ const Events = () => {
           `${API}/api/auth/get-events?authId=${storedPath}`
         );
         const data = response.data;
-        setDetails(data);
-        // console.log(data);
+        setDetails(data.calendar);
+        // console.log(data.calendar);
       } catch (error) {
         console.error(error);
       }
@@ -26,6 +26,8 @@ const Events = () => {
 
     fetchData();
   }, []);
+
+  console.log(details);
 
   const formatDay = (dateString) => {
     const date = new Date(dateString);
@@ -43,7 +45,7 @@ const Events = () => {
     <TopNav routeLink={"/"} barTitle={"Events Calendar"}>
       <div className="w-full flex flex-col items-center justify-center p-2 gap-4 overflow-y-scroll mt-2">
         {/* <input type="time" name="" id="" /> */}
-        {details?.events?.map((data, index) => (
+        {details?.[0]?.events?.map((data, index) => (
           <div
             key={index}
             className="box w-full min-h-[50px]  flex items-center"

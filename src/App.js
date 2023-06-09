@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { Suspense } from "react";
-import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect, useState, lazy, Suspense } from "react";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import ChatBotHelper from "./Chatbot";
 import Loading from "./components/Loading/Loading";
-import CountDown from "./pages/CountDown/CountDown";
-import Events from "./pages/CountDown/Events";
-import GiftRegistry from "./pages/GiftRegistry/GiftRegistry";
 import Home from "./pages/Home/Home";
-import ImageHub from "./pages/ImgHub/ImageHub";
-import ImageLists from "./pages/ImgHub/ImageLists";
-import Playlist from "./pages/Playlist/Playlist";
-import Polls from "./pages/Polls/Polls";
-import VotePoll from "./pages/Polls/VotePoll";
-import VideoGallery from "./pages/VideoGallery/VideoGallery";
-import VideoLists from "./pages/VideoGallery/VideoLists";
+
+// Lazy loaded components
+const CountDown = lazy(() => import("./pages/CountDown/CountDown"));
+const Events = lazy(() => import("./pages/CountDown/Events"));
+const GiftRegistry = lazy(() => import("./pages/GiftRegistry/GiftRegistry"));
+const ImageHub = lazy(() => import("./pages/ImgHub/ImageHub"));
+const ImageLists = lazy(() => import("./pages/ImgHub/ImageLists"));
+const Playlist = lazy(() => import("./pages/Playlist/Playlist"));
+const Polls = lazy(() => import("./pages/Polls/Polls"));
+const VotePoll = lazy(() => import("./pages/Polls/VotePoll"));
+const VideoGallery = lazy(() => import("./pages/VideoGallery/VideoGallery"));
+const VideoLists = lazy(() => import("./pages/VideoGallery/VideoLists"));
 
 const App = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const App = () => {
   const storedType = localStorage.getItem("type");
   const [loading, setLoading] = useState(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const storedPath = localStorage.getItem("path");
     if (location.pathname === "/") {
       navigate(`/file/${storedType}/${storedPath}`);
