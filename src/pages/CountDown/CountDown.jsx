@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { MdOutlineArrowBackIosNew } from "react-icons/md";
-import { BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { API } from "../../utils/URL";
@@ -12,7 +10,6 @@ const CountDown = () => {
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
     const storedPath = localStorage.getItem("path");
@@ -21,7 +18,6 @@ const CountDown = () => {
       .get(`${API}/api/mergedetails?authId=${storedPath}`)
       .then((response) => {
         setDetails(response.data);
-        // console.log(response.data);
         if (
           response.data.mergedData &&
           response.data.mergedData[0] &&
@@ -53,12 +49,10 @@ const CountDown = () => {
       const remainingMinutes = Math.floor(
         (difference % (1000 * 60 * 60)) / (1000 * 60)
       );
-      const remainingSeconds = Math.floor((difference % (1000 * 60)) / 1000);
 
       setDays(remainingDays);
       setHours(remainingHours);
       setMinutes(remainingMinutes);
-      setSeconds(remainingSeconds);
     };
 
     calculateTime();

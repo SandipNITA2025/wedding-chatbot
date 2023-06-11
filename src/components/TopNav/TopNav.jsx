@@ -1,6 +1,6 @@
 import React from "react";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
-import { BiSearch, BiHomeSmile, BiHomeAlt2 } from "react-icons/bi";
+import { BiHomeAlt2 } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
 const TopNav = ({ children, routeLink, barTitle }) => {

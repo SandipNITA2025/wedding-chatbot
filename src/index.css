@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;500;600;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -7,7 +7,7 @@
 * {
   font-family: "Josefin Sans", sans-serif;
 }
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 0;
 }
 .App {
@@ -64,70 +64,6 @@ label input {
 input:focus {
   outline: none;
 }
-/* button {
-  padding: 8px;
-  border: none;
-  width: fit-content;
-  border-radius: 0 5px;
-  cursor: pointer;
-  background-color: #fff !important;
-  color: black;
-} */
-
-
-/* a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
 
 .getbox {
   display: flex;
@@ -145,9 +81,7 @@ button:focus-visible {
   padding: 10px;
 }
 
-
-
-.PopUp{
+.PopUp {
   position: fixed;
 
   left: 25%;
@@ -157,9 +91,9 @@ button:focus-visible {
 
   border: 1px solid #011627;
   border-radius: 1em;
-  box-shadow: -2px 5px 5px #E71D36;
+  box-shadow: -2px 5px 5px #e71d36;
 
-  background-color: #FDFFFC;
+  background-color: #fdfffc;
 
   display: flex;
   flex-direction: column;
@@ -168,7 +102,6 @@ button:focus-visible {
 
   color: #011627;
 }
-.during-popup{
+.during-popup {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
 }
-

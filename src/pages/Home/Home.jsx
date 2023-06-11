@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useEffect } from "react";
 import { BiPoll } from "react-icons/bi";
 import { MdOutlineTimer } from "react-icons/md";
 import { SlCalender } from "react-icons/sl";
@@ -86,7 +85,6 @@ const iconsData = [
   },
 ];
 const Home = () => {
-  // const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const path = location.pathname.split("/")[3];
   const type = location.pathname.split("/")[2];
@@ -96,10 +94,6 @@ const Home = () => {
     localStorage.setItem("type", type);
   }, [path, type]);
 
-  useEffect(() => {
-    // const storedPath = localStorage.getItem("path");
-    // console.log(storedPath);
-  }, []);
 
  
 
@@ -142,15 +136,6 @@ const Home = () => {
             </div>
           </div>
           {/* BOTTOMBAR END*/}
-      {/* <div className=" bg-[#F79489] absolute rounded-full w-[45px] p-0 h-[45px] flex items-center justify-center bottom-9 right-6 border-0 active:scale-95 focus:border-0 focus:outline-0 cursor-pointer">
-          <p onClick={() => setIsOpen(true)} className=" text-xl">
-            <img
-              className=" w-[22px]"
-              src="https://i.postimg.cc/zvc1WjwD/icons8-chat-50.png"
-              alt=""
-            />
-          </p>
-        </div> */}
     </div>
   );
 };

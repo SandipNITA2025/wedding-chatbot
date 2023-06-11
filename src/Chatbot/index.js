@@ -125,7 +125,7 @@ const ChatBotHelper = () => {
   }, [details.mergedData]);
 
   if (loading) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
   if (details?.mergedData?.length === 0) {
@@ -216,7 +216,6 @@ const ChatBotHelper = () => {
     {
       id: "no",
       message: "Okay! No problem.",
-      // trigger: "start",
     },
     {
       id: "yes",
@@ -295,7 +294,7 @@ const ChatBotHelper = () => {
   return (
     <div className="boticon">
       <ThemeProvider theme={CHATBOT_THEME}>
-        <ChatBot steps={steps} floating={true} />
+      <ChatBot steps={steps} floating={true} opened={true} />
       </ThemeProvider>
     </div>
   );

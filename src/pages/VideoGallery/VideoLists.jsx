@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { MdOutlineArrowBackIosNew } from "react-icons/md";
-import { BiSearch } from "react-icons/bi";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
-import { HiViewfinderCircle } from "react-icons/hi2";
 import { RxCross1 } from "react-icons/rx";
 import { API } from "../../utils/URL";
 import TopNav from "../../components/TopNav/TopNav";
-import {BsFillPlayCircleFill} from 'react-icons/bs'
+import { BsFillPlayCircleFill } from "react-icons/bs";
 
 const VideoLists = () => {
   const { id } = useParams();
@@ -31,8 +28,6 @@ const VideoLists = () => {
     fetchData();
   }, [id]);
 
-  // console.log(getLists);
-
   const handleImageModel = (image) => {
     setSelectedImage(image);
   };
@@ -51,7 +46,6 @@ const VideoLists = () => {
               className=" flex-wrap relative flex items-center justify-center flex-col"
             >
               <video
-              
                 className="border border-gray-200 w-full h-[130px] rounded-sm overflow-hidden cursor-pointer object-contain"
                 src={x.url}
                 alt={x.name}
@@ -61,9 +55,6 @@ const VideoLists = () => {
                 <p className="  overflow-hidden text-ellipsis whitespace-nowrap text-center text-[11px] p-1 px-2">
                   {x.name}
                 </p>
-                {/* <p className=" overflow-hidden text-center text-[11px] p-1 px-2">
-                  {`${(x.size / (1024 * 1024)).toFixed(2)} mb`}
-                </p> */}
               </div>
               <button
                 className=" absolute  flex items-center justify-center top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] right-1 "

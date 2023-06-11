@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { AiFillLike } from "react-icons/ai";
-
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { API } from "../../utils/URL";
@@ -18,7 +17,6 @@ const Polls = () => {
         );
         const data = response.data;
         setGetPolls(data);
-        // console.log(data);
       } catch (error) {
         console.error(error);
       }
@@ -34,11 +32,9 @@ const Polls = () => {
     });
     return totalVotes;
   };
-  
 
   return (
-    <TopNav routeLink={'/'} barTitle={"Polls"}>
-
+    <TopNav routeLink={"/"} barTitle={"Polls"}>
       {/* DISPLAY POLLS START*/}
       <div className=" w-full grid grid-cols-2 grid-rows-2 p-2 gap-3 overflow-y-scroll mt-1">
         {getPolls.map((x) => (
@@ -50,7 +46,9 @@ const Polls = () => {
             <div className=" flex items-center flex-col mt-1">
               <p className="flex items-center gap-1 p-1 text-sm text-gray-700">
                 <AiFillLike size={16} className=" text-white" />
-                <span className=" text-sm text-gray-700" >{getTotalVotes(x)} Votes</span>
+                <span className=" text-sm text-gray-700">
+                  {getTotalVotes(x)} Votes
+                </span>
               </p>
               <Link
                 to={`/poll/${x._id}`}
@@ -63,7 +61,7 @@ const Polls = () => {
         ))}
       </div>
       {/* DISPLAY POLLS END*/}
-      </TopNav>
+    </TopNav>
   );
 };
 

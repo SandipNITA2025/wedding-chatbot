@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { API } from "../../utils/URL";
@@ -31,8 +30,6 @@ const ImageHub = () => {
         }
 
         setImgCollections(filteredData);
-        // console.log(filteredData);
-        // console.log(storedType);
         setIsLoading(false);
       } catch (error) {
         console.error(error);
@@ -53,12 +50,6 @@ const ImageHub = () => {
                 className="flex  flex-col items-center w-full h-fit rounded-xl overflow-hidden"
               >
                 <Link to={`/image_hub/images/${x._id}`}>
-                  {/* <img
-                className="w-[120px] h-[120px] rounded-xl overflow-hidden object-cover active:scale-95"
-                // src={x.photos[0].url}
-                src="https://i.postimg.cc/YC900BdS/pngegg.png"
-                alt=""
-              /> */}
                   <div className="border overflow-hidden w-[140px] h-[140px] rounded-[8px] p-1 grid grid-cols-2 grid-rows-2 gap-1">
                     <img
                       className=" w-[100%] h-[100%] rounded-sm overflow-hidden object-cover active:scale-95"

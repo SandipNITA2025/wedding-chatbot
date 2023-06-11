@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { MdOutlineArrowBackIosNew } from "react-icons/md";
-import { BiSearch } from "react-icons/bi";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
-import { HiViewfinderCircle } from "react-icons/hi2";
-import { IoMdCheckmarkCircle } from "react-icons/io";
 import { API } from "../../utils/URL";
 import TopNav from "../../components/TopNav/TopNav";
 
@@ -58,8 +54,6 @@ const VotePoll = () => {
     }
   };
 
-  // console.log(getPoll);
-
   const getTotalVotes = (poll) => {
     let totalVotes = 0;
     poll.options.forEach((option) => {
@@ -95,7 +89,6 @@ const VotePoll = () => {
                 >
                   <div className="flex items-center flex-row gap-2">
                     <UseAnimations
-                      // reverse={checked}
                       onClick={() => {
                         setChecked(!checked);
                         handleVote(getPoll?._id, index);
@@ -107,7 +100,6 @@ const VotePoll = () => {
                     <p className="text-[#F7998E]">{option.text}</p>
                   </div>
                   <div className=" flex items-center">
-                    {/* <span className="text-[#F7998E]">{option.count}</span> */}
                     <span className=" text-sm text-[#F7998E]">
                       {optionPercentage}%
                     </span>

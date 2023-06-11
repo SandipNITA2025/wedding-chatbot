@@ -19,7 +19,6 @@ const GiftRegistry = () => {
       .get(`${API}/api/auth/get-giftlists?authId=${storedPath}`)
       .then((response) => {
         setDetails(response.data);
-        // console.log(response.data);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -31,7 +30,6 @@ const GiftRegistry = () => {
     axios
       .put(`${API}/api/auth/giftlists/${id}/gift`, { receivedGift: true })
       .then((response) => {
-        // Retrieve receivedGift from details state
         const updatedDetails = details.map((item) => {
           if (item._id === id) {
             return {
@@ -70,59 +68,57 @@ const GiftRegistry = () => {
 
   return (
     <>
-     
-        <TopNav routeLink={"/"} barTitle={"Gift Registry"}>
-          <div className="w-full flex flex-col items-center justify-center p-2  overflow-y-scroll mt-1">
-            <div className=" w-[90%] m-auto flex items-center justify-center flex-col">
-              <div className=" w-[100%] h-[150px] ">
-                <img
-                  className=" object-contain "
-                  src="https://i.postimg.cc/wvF6RFH5/Gift-box-on-transparent-background-PNG.png"
-                  alt=""
-                />
-              </div>
-              <p className=" font-['Great_Vibes'] text-justify text-[1.2rem] mt-1">
-                Your love and support are the most precious gifts we could
-                receive. If you would like to give a gift, we have created a
-                registry to make it easier for you. Thank you for celebrating
-                with us!{" "}
-              </p>
+      <TopNav routeLink={"/"} barTitle={"Gift Registry"}>
+        <div className="w-full flex flex-col items-center justify-center p-2  overflow-y-scroll mt-1">
+          <div className=" w-[90%] m-auto flex items-center justify-center flex-col">
+            <div className=" w-[100%] h-[150px] ">
+              <img
+                className=" object-contain "
+                src="https://i.postimg.cc/wvF6RFH5/Gift-box-on-transparent-background-PNG.png"
+                alt=""
+              />
             </div>
+            <p className=" font-['Great_Vibes'] text-justify text-[1.2rem] mt-1">
+              Your love and support are the most precious gifts we could
+              receive. If you would like to give a gift, we have created a
+              registry to make it easier for you. Thank you for celebrating with
+              us!{" "}
+            </p>
+          </div>
 
-            <div className="w-[90%] mt-5 flex items-start flex-col">
-              <div className=" flex items-center justify-center gap-2">
-                <BsClipboard2CheckFill size={20} className=" text-[#F79489]" />
-                <h2>Our Checklist</h2>
-              </div>
-              <hr className=" w-full h-1 bg-white" />
-              <div className="w-full space-y-2 mt-2">
-                {/* options */}
-                {details.map((i, ind) => (
-                  <div
-                    key={ind}
-                    className="w-full h-fit pl-4 flex items-center gap-3"
-                  >
-                    {i?.receivedGift ? (
-                      <IoMdCheckmarkCircleOutline
-                        className=" cursor-pointer"
-                        size={20}
-                      />
-                    ) : (
-                      <FiCircle
-                        className=" cursor-pointer"
-                        onClick={() => giftUpdateTrue(i._id)}
-                        size={19}
-                      />
-                    )}
+          <div className="w-[90%] mt-5 flex items-start flex-col">
+            <div className=" flex items-center justify-center gap-2">
+              <BsClipboard2CheckFill size={20} className=" text-[#F79489]" />
+              <h2>Our Checklist</h2>
+            </div>
+            <hr className=" w-full h-1 bg-white" />
+            <div className="w-full space-y-2 mt-2">
+              {/* options */}
+              {details.map((i, ind) => (
+                <div
+                  key={ind}
+                  className="w-full h-fit pl-4 flex items-center gap-3"
+                >
+                  {i?.receivedGift ? (
+                    <IoMdCheckmarkCircleOutline
+                      className=" cursor-pointer"
+                      size={20}
+                    />
+                  ) : (
+                    <FiCircle
+                      className=" cursor-pointer"
+                      onClick={() => giftUpdateTrue(i._id)}
+                      size={19}
+                    />
+                  )}
 
-                    <p className=" text-[.9rem]">{i.giftName}</p>
-                  </div>
-                ))}
-              </div>
+                  <p className=" text-[.9rem]">{i.giftName}</p>
+                </div>
+              ))}
             </div>
           </div>
-        </TopNav>
-    
+        </div>
+      </TopNav>
     </>
   );
 };

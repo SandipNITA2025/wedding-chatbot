@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { API } from "../../utils/URL";
 import TopNav from "../../components/TopNav/TopNav";
-import { BsFillPlayCircleFill } from "react-icons/bs";
 
 const VideoGallery = () => {
   const [imgCollections, setImgCollections] = useState([]);
