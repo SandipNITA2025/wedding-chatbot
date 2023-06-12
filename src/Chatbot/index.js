@@ -294,7 +294,7 @@ const ChatBotHelper = () => {
   return (
     <div className="boticon">
       <ThemeProvider theme={CHATBOT_THEME}>
-      <ChatBot steps={steps} floating={true} opened={true} />
+        <ChatBot steps={steps} floating={true} opened={true} />
       </ThemeProvider>
     </div>
   );

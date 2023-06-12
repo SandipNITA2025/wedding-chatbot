@@ -18,7 +18,7 @@ const VideoGallery = () => {
 
         // Filter data based on inviteType and storedType
         let filteredData = [];
-        if (storedType === "general") {
+        if (storedType === "close") {
           filteredData = data.details;
         } else {
           filteredData = data.details.filter(
@@ -33,7 +33,7 @@ const VideoGallery = () => {
     };
 
     fetchData();
-  }, []);
+  }, [storedType]);
 
   return (
     <TopNav routeLink={"/"} barTitle={"Video Gallery"}>

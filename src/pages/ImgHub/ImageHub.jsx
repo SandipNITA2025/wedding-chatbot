@@ -4,6 +4,7 @@ import axios from "axios";
 import { API } from "../../utils/URL";
 import TopNav from "../../components/TopNav/TopNav";
 
+
 const ImageHub = () => {
   const [imgCollections, setImgCollections] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -21,7 +22,7 @@ const ImageHub = () => {
 
         // Filter data based on inviteType and storedType
         let filteredData = [];
-        if (storedType === "general") {
+        if (storedType === "close") {
           filteredData = data.details;
         } else {
           filteredData = data.details.filter(
