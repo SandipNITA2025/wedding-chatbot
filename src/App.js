@@ -15,6 +15,7 @@ const Polls = lazy(() => import("./pages/Polls/Polls"));
 const VotePoll = lazy(() => import("./pages/Polls/VotePoll"));
 const VideoGallery = lazy(() => import("./pages/VideoGallery/VideoGallery"));
 const VideoLists = lazy(() => import("./pages/VideoGallery/VideoLists"));
+const CustomPlaylists = lazy(() => import("./pages/Playlist/CustomPlaylists"));
 
 const App = () => {
   const navigate = useNavigate();
@@ -66,6 +67,8 @@ const App = () => {
               <Route path="/gift_registry" element={<GiftRegistry />} />
               {/* Playlist */}
               <Route path="/playlists" element={<Playlist />} />
+              {/* Playlist */}
+              <Route path="/playlists/:id" element={<CustomPlaylists />} />
             </Routes>
           )}
 
