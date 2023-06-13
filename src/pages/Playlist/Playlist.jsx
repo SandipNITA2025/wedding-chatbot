@@ -42,7 +42,7 @@ const Playlist = () => {
 
     const url = `https://api.spotify.com/v1/search?q=${encodeURIComponent(
       query
-    )}&type=track%2Cplaylist%2Calbum&limit=80`;
+    )}&type=track%2Cplaylist%2Calbum&limit=50`;
     const clientId = "11fd30880b5f44f8bde303ac14349ed8";
     const clientSecret = "23dd884fab5942d9828577dde559c984";
 
