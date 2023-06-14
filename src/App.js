@@ -2,11 +2,12 @@ import React, { useEffect, useState, lazy, Suspense } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import ChatBotHelper from "./Chatbot";
 import Loading from "./components/Loading/Loading";
+import Event from "./pages/Calender/Event";
 import Home from "./pages/Home/Home";
 
 // Lazy loaded components
 const CountDown = lazy(() => import("./pages/CountDown/CountDown"));
-const Events = lazy(() => import("./pages/CountDown/Events"));
+const Calender = lazy(() => import("./pages/Calender/Calender"));
 const GiftRegistry = lazy(() => import("./pages/GiftRegistry/GiftRegistry"));
 const ImageHub = lazy(() => import("./pages/ImgHub/ImageHub"));
 const ImageLists = lazy(() => import("./pages/ImgHub/ImageLists"));
@@ -62,7 +63,9 @@ const App = () => {
               {/* Count Down */}
               <Route path="/count_down" element={<CountDown />} />
               {/* Calender */}
-              <Route path="/events" element={<Events />} />
+              <Route path="/calender" element={<Calender />} />
+              {/* Calender */}
+              <Route path="/event/:id" element={<Event />} />
               {/* Gift Registry */}
               <Route path="/gift_registry" element={<GiftRegistry />} />
               {/* Playlist */}

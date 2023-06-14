@@ -13,7 +13,6 @@ const Playlist = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [selectedSongs, setSelectedSongs] = useState([]);
-  const [currentSong, setCurrentSong] = useState(null);
   const [playlistName, setPlaylistName] = useState("");
 
   useEffect(() => {

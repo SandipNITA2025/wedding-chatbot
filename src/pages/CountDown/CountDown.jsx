@@ -80,7 +80,7 @@ const CountDown = () => {
         </div>
         <div className="mt-3 flex items-center justify-center">
           <Link
-            to="/events"
+            to="/calender"
             className="bg-gray-200 text-[1rem] text-[#f79489] p-2 px-7 rounded-3xl active:scale-95"
           >
             Events

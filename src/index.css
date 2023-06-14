@@ -105,3 +105,19 @@ input:focus {
 .during-popup {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
 }
+
+/* .moving-text-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.moving-text {
+  animation: marquee 5s linear infinite;
+  white-space: nowrap;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+} */
+

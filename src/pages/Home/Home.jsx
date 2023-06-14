@@ -53,7 +53,7 @@ const iconsData = [
   {
     id: 5,
     icon: (
-      <Link to="/events">
+      <Link to="/calender">
         <SlCalender size={28} className="text-[#F79489]" />
       </Link>
     ),

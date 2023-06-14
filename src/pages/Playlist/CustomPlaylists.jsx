@@ -17,7 +17,6 @@ const CustomPlaylists = () => {
           `${API}/api/auth/suggest_playlist/${id}`
         );
         const data = response.data;
-        // console.log(data);
         setGetLists(data?.details);
       } catch (error) {
         console.error(error);
@@ -27,7 +26,6 @@ const CustomPlaylists = () => {
     fetchData();
   }, [id]);
 
-  console.log(getLists);
   return (
     <TopNav routeLink={"/playlists"} barTitle={getLists.playlistName}>
       <div className="w-full px-3 mt-3 flex items-center gap-3 flex-col">
@@ -36,11 +34,12 @@ const CustomPlaylists = () => {
             <Link
               to={i.externalUrl}
               target="_blank"
-              className="bg-white px-[6px] py-2 border border-gray-300 cursor-pointer rounded-md flex items-center gap-2 hover:bg-gray-50 active:scale-95"
+              className="moving-text-container bg-white px-[6px] py-2 border border-gray-300 cursor-pointer rounded-md flex items-center gap-2 hover:bg-gray-50 active:scale-95"
               key={i?._id}
             >
               <BsMusicNote size={18} className="text-green-500" />
-              <p className="text-[13px] w-[100%] overflow-hidden text-ellipsis whitespace-nowrap">
+
+              <p className=" moving-text text-[13px] w-[100%] overflow-hidden text-ellipsis whitespace-nowrap">
                 {i?.name}
               </p>
             </Link>

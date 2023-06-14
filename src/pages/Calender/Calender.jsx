@@ -39,6 +39,13 @@ const Events = () => {
     return date.toLocaleDateString(undefined, options);
   };
 
+  const openGoogleMaps = (loca) => {
+    const searchURL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+      loca
+    )}`;
+    window.open(searchURL, "_blank");
+  };
+
   return (
     <TopNav routeLink={"/"} barTitle={"Events Calendar"}>
       <div className="w-full flex flex-col items-center justify-center p-2 gap-4 overflow-y-scroll mt-2">
@@ -54,25 +61,27 @@ const Events = () => {
               </p>
               <p className=" overflow-hidden text-ellipsis whitespace-nowrap text-[11px] flex items-center">
                 <MdLocationPin size={13} className="text-[#F79489]" />
-                <Link
-                  to={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                    data.eventLocation
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <span
+                  // to={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                  //   data.eventLocation
+                  // )}`}
+                  // target="_blank"
+                  // rel="noopener noreferrer"
                 >
                   {data.eventLocation}
-                </Link>
+                </span>
               </p>
             </div>
             <div className="right w-full flex-[3]">
-              <button
-                className={`${
-                  index % 2 === 0 ? "bg-[#E7B6C7]" : "bg-[#F79489]"
-                } active:scale-95 w-[95%] p-[14px] text-[14px] text-white`}
-              >
-                {data.eventName}
-              </button>
+              <Link to={`/event/${data._id}`}>
+                <button
+                  className={`${
+                    index % 2 === 0 ? "bg-[#E7B6C7]" : "bg-[#F79489]"
+                  } active:scale-95 w-[95%] p-[14px] text-[14px] text-white`}
+                >
+                  {data.eventName}
+                </button>
+              </Link>
             </div>
           </div>
         ))}
