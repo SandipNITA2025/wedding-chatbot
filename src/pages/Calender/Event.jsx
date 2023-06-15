@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { API } from "../../utils/URL";
 import TopNav from "../../components/TopNav/TopNav";
@@ -90,9 +90,16 @@ const Event = () => {
               allowFullScreen
             ></iframe>
             <div className="mt-2">
-              <button className="text-white p-1 rounded-sm px-3 bg-[#F79489]">
+              <Link
+                to={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                  getEvent.eventLocation
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white p-2 mt-1 rounded-sm px-3 bg-[#F79489]"
+              >
                 Follow Map
-              </button>
+              </Link>
             </div>
           </div>
         </div>
