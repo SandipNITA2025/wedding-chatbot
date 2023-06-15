@@ -258,9 +258,11 @@ const Playlist = () => {
           <Link
             to={`/playlists/${i._id}`}
             key={i._id}
-            className="active:scale-95 cursor-pointer w-[95%] flex items-center gap-3 border border-green-200 rounded-[4px] hover:bg-green-50 p-[.4rem] px-3"
+            className="active:scale-95 cursor-pointer w-[95%] flex items-center gap-2 border border-green-200 rounded-[4px] hover:bg-green-50 p-[.4rem] px-3"
           >
-            <BiListUl size={20} className="text-green-500" />
+            <span className=" min-w-[20px]">
+              <BiListUl size={20} className="text-green-500" />
+            </span>
             <span className="overflow-hidden text-ellipsis whitespace-nowrap">
               {i.playlistName}
             </span>

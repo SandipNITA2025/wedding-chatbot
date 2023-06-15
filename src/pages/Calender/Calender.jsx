@@ -67,6 +67,7 @@ const Events = () => {
                   // )}`}
                   // target="_blank"
                   // rel="noopener noreferrer"
+                  className=" w-[110px]  overflow-hidden text-ellipsis whitespace-nowrap"
                 >
                   {data.eventLocation}
                 </span>

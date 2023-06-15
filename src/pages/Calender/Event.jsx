@@ -74,10 +74,12 @@ const Event = () => {
               {formatDay(getEvent.eventDate)}, {getEvent.eventTime}
             </span>
           </p>
-          <p className="text-[14px] flex items-center gap-1 font-semibold">
-            <MdOutlineLocationOn />
+          <div className="text-[14px] flex items-start gap-0 font-semibold">
+           <div className=" min-w-[20px]">
+           <MdOutlineLocationOn/>
+           </div>
             <span>{getEvent.eventLocation}</span>
-          </p>
+          </div>
 
           <div className=" mt-3 w-full flex flex-col items-center justify-center m-auto">
             <iframe
