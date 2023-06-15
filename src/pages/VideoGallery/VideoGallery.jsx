@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { API } from "../../utils/URL";
 import TopNav from "../../components/TopNav/TopNav";
+import { FcFolder } from "react-icons/fc";
 
 const VideoGallery = () => {
   const [imgCollections, setImgCollections] = useState([]);
@@ -45,14 +46,14 @@ const VideoGallery = () => {
             className="relative flex flex-col items-center w-full h-fit rounded-xl overflow-hidden"
           >
             <Link className="" to={`/video_gallery/videos/${i._id}`}>
-              <img
+              {/* <img
                 className="w-[140px] object-contain rounded-md overflow-hidden  active:scale-95"
                 src="https://i.postimg.cc/Kcp05b8k/2478133361556860970-256.png"
                 alt=""
-              />
-              
+              /> */}
+              <FcFolder size={120} />
             </Link>
-            
+
             <p className="text-center text-[13px] p-1">
               {i.VideoCollectionName}
             </p>
