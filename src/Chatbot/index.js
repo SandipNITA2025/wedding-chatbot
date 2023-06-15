@@ -30,12 +30,14 @@ const Review = ({ steps }) => {
   const { guestName, guestEmail } = steps;
 
   const handleSubmit = () => {
+    const storedPath = localStorage.getItem("path");
+    const storedType = localStorage.getItem("type");
     const formData = {
-      loginId: "6464855699641087a53b46e0",
+      loginId: storedPath,
       guestName: guestName.value,
       guestEmail: guestEmail.value,
       guestStatus: "Yes",
-      inviteType: "close",
+      inviteType: storedType,
     };
 
     axios

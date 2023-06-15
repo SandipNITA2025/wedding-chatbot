@@ -10,8 +10,6 @@ import { MdOutlineDateRange, MdOutlineLocationOn } from "react-icons/md";
 const Event = () => {
   const { id } = useParams();
   const [getEvent, setGetEvent] = useState([]);
-  const [submit, setSubmit] = useState(false);
-  const [checked, setChecked] = useState(false);
 
   const fetchData = async () => {
     try {
@@ -56,14 +54,14 @@ const Event = () => {
             }}
           >
             <div className="absolute bottom-0 flex items-center gap-2 justify-center text-white p-2">
-              <BiParty size={24} />
+              {/* <BiParty size={24} /> */}
               <h2 className=" text-2xl font-semibold">{getEvent.eventName}</h2>
             </div>
           </div>
         </div>
 
         <div className=" flex  flex-col items-start w-[95%]">
-          <h2 className=" text-2xl font-semibold">{getEvent.eventName}</h2>
+          {/* <h2 className=" text-2xl font-semibold">{getEvent.eventName}</h2> */}
           <p className="text-[14px] flex items-center gap-1 font-medium">
             <MdOutlineDateRange />
             <span>
@@ -81,7 +79,7 @@ const Event = () => {
             <span>{getEvent.eventLocation}</span>
           </p>
 
-          <div className=" mt-3 w-full flex flex-col items-center justify-center m-auto"> 
+          <div className=" mt-3 w-full flex flex-col items-center justify-center m-auto">
             <iframe
               title="Google Maps"
               className=" w-[90%] h-[200px]"
@@ -91,16 +89,12 @@ const Event = () => {
               )}`}
               allowFullScreen
             ></iframe>
-             <div className="mt-2">
-            <button
-              className="text-white p-1 rounded-sm px-3 bg-[#F79489]"
-             
-            >
-              Follow Map
-            </button>
+            <div className="mt-2">
+              <button className="text-white p-1 rounded-sm px-3 bg-[#F79489]">
+                Follow Map
+              </button>
+            </div>
           </div>
-          </div>
-         
         </div>
       </div>
     </TopNav>
