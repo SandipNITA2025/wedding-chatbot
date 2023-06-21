@@ -3,9 +3,9 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
-import {FiSettings} from 'react-icons/fi'
-import {BiMessageDetail} from 'react-icons/bi'
-import {FaUser} from 'react-icons/fa'
+import { FiSettings } from "react-icons/fi";
+import { BiMessageDetail } from "react-icons/bi";
+import { FaUser } from "react-icons/fa";
 
 // import icons png:
 import ImageHub from "../../icons/Photo Gallery.png";
@@ -119,10 +119,10 @@ const HomeDesk = ({ backgroundImage }) => {
         </div>
       </div>
       {/* LOWER CONTAINER */}
-      <div className=" w-full px-10 sm:px-10 sm:py-3 bg-[#F3E1D8]  flex-1 sm:flex-[2] flex items-center  h-full">
+      <div className=" w-full px-10 sm:px-10 sm:py-3 bg-[#F3E1D8]  flex-1 sm:flex-[2] flex   h-full">
         <div className=" w-[70%] sm:w-full  border-black">
           {/* TEXT */}
-          <div>
+          <div className="mt-2">
             <h2 className=" sm:hidden text-[36px] text-[#8A553C]">
               Lörem ipsum onas vera rende exoment
             </h2>
@@ -155,7 +155,7 @@ const HomeDesk = ({ backgroundImage }) => {
         </div>
       </div>
       {/* BOTTOMBAR START */}
-          {/* <div className="buttom-nav drop-shadow-[0_8px_8px_rgba(0,0,0,0.5)] absolute bottom-0 h-[60px] bg-white w-full p-2 flex items-center justify-around">
+      {/* <div className="buttom-nav drop-shadow-[0_8px_8px_rgba(0,0,0,0.5)] absolute bottom-0 h-[60px] bg-white w-full p-2 flex items-center justify-around">
             <div className=" cursor-pointer text-[#F79489] active:scale-95">
               <FiSettings size={20} />
             </div>
@@ -166,7 +166,7 @@ const HomeDesk = ({ backgroundImage }) => {
               <FaUser size={20} />
             </div>
           </div> */}
-           {/* BOTTOMBAR END */}
+      {/* BOTTOMBAR END */}
     </div>
   );
 };
