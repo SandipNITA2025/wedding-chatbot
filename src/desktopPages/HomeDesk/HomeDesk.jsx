@@ -93,7 +93,7 @@ const HomeDesk = ({ backgroundImage }) => {
     <div className=" w-full  h-full flex flex-col items-center sm:min-h-[700px] relative">
       <Navbar />
       {/* UPPER CONTAINER */}
-      <div className=" relative  overflow-hidden w-full flex-1 min-h-[54%] sm:max-h-[43%] ">
+      <div className=" relative  overflow-hidden w-full flex-1 h-[54%] sm:min-h-[40%]  ">
         <img className=" sm:object-left" src={bgbg} alt="" />
         <div className=" sm:hidden absolute  top-[50%] px-10 translate-y-[-50%] w-[530px] flex flex-col gap-1">
           <h2 className=" text-[48px] font-semibold text-white">
@@ -112,14 +112,14 @@ const HomeDesk = ({ backgroundImage }) => {
         {/* Hati */}
         <div className=" min-w-full overflow-hidden  z-10 h-full absolute bottom-0 sm:bottom-[-20px] flex items-start justify-center left-[50%] translate-x-[-50%]">
           <img
-            className="w-full md:w-[75%] sm:w-[70%] xsm:w-[74%] z-10 object-contain"
+            className="w-full  md:w-[75%] sm:w-[70%] xsm:w-[74%] z-10 object-contain"
             src={Hati}
             alt=""
           />
         </div>
       </div>
       {/* LOWER CONTAINER */}
-      <div className=" w-full px-10 sm:px-10 sm:py-3 bg-[#F3E1D8]  flex-1 flex items-center  h-full">
+      <div className=" w-full px-10 sm:px-10 sm:py-3 bg-[#F3E1D8]  flex-1 sm:flex-[2] flex items-center  h-full">
         <div className=" w-[70%] sm:w-full  border-black">
           {/* TEXT */}
           <div>

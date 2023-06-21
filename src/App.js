@@ -148,7 +148,7 @@ const App = () => {
           )}
         </div>
         {/* -------------------- MOBILE VIEW END --------------- */}
-        <ChatBotHelper />
+        {/* <ChatBotHelper /> */}
       </div>
     </Suspense>
   );
