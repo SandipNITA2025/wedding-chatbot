@@ -31,7 +31,8 @@ module.exports = {
 
       sm: { max: "639px" },
       // => @media (max-width: 639px) { ... }
-      exsm: { max: "380px" },
+      xsm: { max: "380px" },
+      xxsm: { max: "321px" },
     },
     extend: {
       colors: {

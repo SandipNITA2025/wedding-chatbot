@@ -86,10 +86,10 @@ Review.defaultProps = {
 const CHATBOT_THEME = {
   background: "#FFFEFC",
   fontFamily: "Roboto",
-  headerBgColor: "#f79489",
+  headerBgColor: "#F2A559",
   headerFontColor: "#fff",
   headerFontSize: "18px",
-  botBubbleColor: "#f79489",
+  botBubbleColor: "#F8BB7E",
   botFontColor: "#fff",
   userBubbleColor: "#f5f6fa",
   userFontColor: "#000",
@@ -127,7 +127,7 @@ const ChatBotHelper = () => {
   }, [details.mergedData]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   if (details?.mergedData?.length === 0) {

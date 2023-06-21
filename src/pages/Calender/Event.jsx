@@ -43,7 +43,7 @@ const Event = () => {
       <div className="w-full flex flex-col items-center justify-center p-2 gap-4 overflow-y-scroll mt-1">
         <div className="relative w-full">
           <div
-            className="h-[200px] sm:h-[260px] overflow-hidden rounded-xl"
+            className="h-[200px] sm:h-[250px] overflow-hidden rounded-xl"
             style={{
               backgroundImage:
                 "linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.9) 100%), url('https://i.postimg.cc/RVVQ7FKX/photo-1527529482837-4698179dc6ce-1.png')",
@@ -86,7 +86,7 @@ const Event = () => {
               title="Google Maps"
               className=" w-[90%] h-[200px]"
               style={{ border: 0 }}
-              src={`https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${encodeURIComponent(
+              src={`https://www.google.com/maps/embed/v1/place?key=${`AIzaSyCqbdL5YFZ01wrU29cN-P-UQrxdBPLLUic&q`}=${encodeURIComponent(
                 getEvent.eventLocation
               )}`}
               allowFullScreen

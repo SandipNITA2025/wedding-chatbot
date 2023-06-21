@@ -16,8 +16,6 @@ const VideoGallery = () => {
           `${API}/api/auth/get-video-collection?authId=${storedPath}`
         );
         const data = response.data;
-
-        // Filter data based on inviteType and storedType
         let filteredData = [];
         if (storedType === "close") {
           filteredData = data.details;

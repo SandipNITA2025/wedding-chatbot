@@ -4,51 +4,123 @@ import ChatBotHelper from "./Chatbot";
 import Loading from "./components/Loading/Loading";
 import Event from "./pages/Calender/Event";
 import Home from "./pages/Home/Home";
+import CountDown from "./pages/CountDown/CountDown";
+import Calender from "./pages/Calender/Calender";
+import GiftRegistry from "./pages/GiftRegistry/GiftRegistry";
+import ImageHub from "./pages/ImgHub/ImageHub";
+import ImageLists from "./pages/ImgHub/ImageLists";
+import Playlist from "./pages/Playlist/Playlist";
+import CustomPlaylists from "./pages/Playlist/CustomPlaylists";
+import Polls from "./pages/Polls/Polls";
+import VotePoll from "./pages/Polls/VotePoll";
+import VideoGallery from "./pages/VideoGallery/VideoGallery";
+import VideoLists from "./pages/VideoGallery/VideoLists";
+
+// DESLTOP VIEW PAGES
+import HomeDesk from "./desktopPages/HomeDesk/HomeDesk";
+
+//bgData
+import { bgData } from "./data";
 
 // Lazy loaded components
-const CountDown = lazy(() => import("./pages/CountDown/CountDown"));
-const Calender = lazy(() => import("./pages/Calender/Calender"));
-const GiftRegistry = lazy(() => import("./pages/GiftRegistry/GiftRegistry"));
-const ImageHub = lazy(() => import("./pages/ImgHub/ImageHub"));
-const ImageLists = lazy(() => import("./pages/ImgHub/ImageLists"));
-const Playlist = lazy(() => import("./pages/Playlist/Playlist"));
-const Polls = lazy(() => import("./pages/Polls/Polls"));
-const VotePoll = lazy(() => import("./pages/Polls/VotePoll"));
-const VideoGallery = lazy(() => import("./pages/VideoGallery/VideoGallery"));
-const VideoLists = lazy(() => import("./pages/VideoGallery/VideoLists"));
-const CustomPlaylists = lazy(() => import("./pages/Playlist/CustomPlaylists"));
+// const CountDown = lazy(() => import("./pages/CountDown/CountDown"));
+// const Calender = lazy(() => import("./pages/Calender/Calender"));
+// const GiftRegistry = lazy(() => import("./pages/GiftRegistry/GiftRegistry"));
+// const ImageHub = lazy(() => import("./pages/ImgHub/ImageHub"));
+// const ImageLists = lazy(() => import("./pages/ImgHub/ImageLists"));
+// const Playlist = lazy(() => import("./pages/Playlist/Playlist"));
+// const Polls = lazy(() => import("./pages/Polls/Polls"));
+// const VotePoll = lazy(() => import("./pages/Polls/VotePoll"));
+// const VideoGallery = lazy(() => import("./pages/VideoGallery/VideoGallery"));
+// const VideoLists = lazy(() => import("./pages/VideoGallery/VideoLists"));
+// const CustomPlaylists = lazy(() => import("./pages/Playlist/CustomPlaylists"));
 
 const App = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const storedType = localStorage.getItem("type");
+  // const theme = localStorage.getItem("theme");
+  const theme = location.pathname.split("/")[3];
+
   const [loading, setLoading] = useState(true);
+  const [backgroundImage, setBackgroundImage] = useState(null);
 
   useEffect(() => {
     const storedPath = localStorage.getItem("path");
+    const theme = localStorage.getItem("theme");
     if (location.pathname === "/") {
-      navigate(`/file/${storedType}/${storedPath}`);
+      navigate(`/file/${storedType}/${theme}/${storedPath}`);
     }
-  }, [location.pathname, navigate, storedType]);
+  }, [location.pathname, navigate, storedType, theme, backgroundImage]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
     }, 1000);
     return () => clearTimeout(timer);
-  }, []);
+  }, [backgroundImage]);
+
+  useEffect(() => {
+    const theme = localStorage.getItem("theme");
+    changeBackgroundImage(theme);
+    // localStorage.setItem("theme", theme);
+  }, [theme, backgroundImage]);
+
+  const changeBackgroundImage = (name) => {
+    const image = bgData.find((item) => item.name === name);
+    if (image) {
+      setBackgroundImage(image.url);
+    }
+  };
 
   return (
     <Suspense fallback={<Loading />}>
-      <div className="relative flex items-center justify-center w-screen mx-auto h-screen">
-        <div className="relative w-[330px] h-[560px] items-center justify-center border-gray-200 rounded-md bg-white flex-col shadow-[0_3px_30px_rgba(0,0,0,0.25)] overflow-hidden overflow-y-scroll sm:h-full sm:w-full">
+      <div
+        className="relative flex items-center justify-center w-screen mx-auto h-screen"
+        // style={{
+        //   background: `url(${backgroundImage}) center/cover`,
+        // }}
+      >
+        {/* -------------------- DESKTOP VIEW START --------------- */}
+        <div className="  relative w-full h-full m-auto bg-transparent">
+          <Routes>
+            <Route
+              path={`/file/close/a/:id`}
+              element={<HomeDesk backgroundImage={backgroundImage} />}
+            />
+            <Route
+              path={`/file/close/b/:id`}
+              element={<HomeDesk backgroundImage={backgroundImage} />}
+            />
+            <Route
+              path={`/file/close/c/:id`}
+              element={<HomeDesk backgroundImage={backgroundImage} />}
+            />
+            <Route
+              path={`/file/close/d/:id`}
+              element={<HomeDesk backgroundImage={backgroundImage} />}
+            />
+          </Routes>
+        </div>
+        {/* -------------------- DESKTOP VIEW END --------------- */}
+        {/* -------------------- MOBILE VIEW START --------------- */}
+        <div className="hidden relative w-[330px] h-[560px] items-center justify-center border-gray-200 rounded-md bg-white flex-col shadow-[0_3px_30px_rgba(0,0,0,0.25)] overflow-hidden overflow-y-scroll sm:h-full sm:w-full">
           {loading ? (
             <Loading />
           ) : (
             <Routes>
-              <Route path={`/file/close/:id`} element={<Home />} />
-              <Route path={`/file/general/:id`} element={<Home />} />
+              {/* close */}
+              <Route path={`/file/close/a/:id`} element={<Home />} />
+              <Route path={`/file/close/b/:id`} element={<Home />} />
+              <Route path={`/file/close/c/:id`} element={<Home />} />
+              <Route path={`/file/close/d/:id`} element={<Home />} />
+              {/* general */}
+              <Route path={`/file/general/a/:id`} element={<Home />} />
+              <Route path={`/file/general/b/:id`} element={<Home />} />
+              <Route path={`/file/general/c/:id`} element={<Home />} />
+              <Route path={`/file/general/d/:id`} element={<Home />} />
               {/* Image Hub */}
+              {/* <Route path={`/file/${storedType}/${theme}/image_hub`} element={<ImageHub />} /> */}
               <Route path="/image_hub" element={<ImageHub />} />
               <Route path="/image_hub/images/:id" element={<ImageLists />} />
               {/* Video Gallery */}
@@ -74,9 +146,9 @@ const App = () => {
               <Route path="/playlists/:id" element={<CustomPlaylists />} />
             </Routes>
           )}
-
-          <ChatBotHelper />
         </div>
+        {/* -------------------- MOBILE VIEW END --------------- */}
+        <ChatBotHelper />
       </div>
     </Suspense>
   );

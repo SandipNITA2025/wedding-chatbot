@@ -18,6 +18,7 @@ const iconsData = [
     id: 1,
     icon: (
       <Link to="/image_hub">
+        {/* <Link to={`file/${storedType}/${theme}/image_hub`}></Link> */}
         <AiOutlineCamera size={32} className="text-[#F79489]" />
       </Link>
     ),
@@ -86,19 +87,21 @@ const iconsData = [
 ];
 const Home = () => {
   const location = useLocation();
-  const path = location.pathname.split("/")[3];
+  const path = location.pathname.split("/")[4];
+  const theme = location.pathname.split("/")[3];
   const type = location.pathname.split("/")[2];
 
   useEffect(() => {
     localStorage.setItem("path", path);
+    localStorage.setItem("theme", theme);
     localStorage.setItem("type", type);
-  }, [path, type]);
+  }, [path, type, theme]);
 
 
  
 
   return (
-    <div className="w-full h-full flex items-center justify-center flex-col">
+    <div className=" w-full h-full flex items-center justify-center flex-col">
       <div className=" w-full flex items-center justify-center mb-3 mt-3 mx-auto">
         <img
           src="https://ik.imagekit.io/imgkitt/banner.jpg?updatedAt=1685114950444"
