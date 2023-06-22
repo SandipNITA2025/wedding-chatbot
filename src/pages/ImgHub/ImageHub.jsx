@@ -44,7 +44,7 @@ const ImageHub = () => {
     <>
         <TopNav routeLink={"/"} barTitle={"Image Hub"}>
           {/* DISPLAY COLLECTIONS START*/}
-          <div className=" bg-[#F3E1D8] w-full grid grid-cols-2 grid-rows-2 p-2 gap-3 overflow-y-scroll mt-2">
+          <div className=" bg-[#F3E1D8] w-full grid grid-cols-6 sm:grid-cols-2 grid-rows-2 p-2 gap-3 overflow-y-scroll mt-2">
             {imgCollections?.map((x) => (
               <div
                 key={x._id}
