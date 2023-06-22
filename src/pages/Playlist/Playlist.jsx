@@ -156,14 +156,14 @@ const Playlist = () => {
           <form className="w-full relative">
             <h2 className="w-full mb-1 block">Suggest Song</h2>
             <input
-              className="rounded-sm p-[.4rem] w-full border"
+              className="rounded-sm w-[30%] p-[.4rem] sm:w-full border"
               type="search"
               value={query}
               onChange={handleQueryChange}
               placeholder="Search for a playlist"
             />
             {/* SELECTED SONG */}
-            <div className="grid gap-1 grid-cols-2">
+            <div className=" w-[30%] sm:w-full grid gap-1 grid-cols-3 sm:grid-cols-2">
               {selectedSongs.map((song) => (
                 <div
                   key={song.id}
@@ -184,7 +184,7 @@ const Playlist = () => {
               <>
                 <h2 className="w-full py-1 block">Playlist Name</h2>
                 <input
-                  className="rounded-sm p-[.4rem] w-full border"
+                  className="rounded-sm p-[.4rem] w-[30%] sm:w-full border"
                   type="text"
                   placeholder="Enter playlist name"
                   value={playlistName}
@@ -193,7 +193,7 @@ const Playlist = () => {
               </>
             )}
             {selectedSongs.length > 0 && (
-              <div className="w-full flex mt-2 items-center justify-center">
+              <div className="w-[30%] sm:w-full flex mt-2 items-center justify-center">
                 <button
                   onClick={handleToAddPlaylist}
                   className="active:scale-95 text-center cursor-pointer p-[.35rem] px-2 text-white rounded-[3px] bg-green-500"
@@ -206,7 +206,7 @@ const Playlist = () => {
             {/* SELECTED SONG */}
             {/* SEARCH LISTS */}
             {showSearchLists && (
-              <div className="searchLists w-full border border-gray-200 rounded-[4px] absolute top-[70px] overflow-y-scroll bg-gray-50 h-[250px] p-1">
+              <div className="searchLists w-[30%] sm:w-full border border-gray-200 rounded-[4px] absolute top-[70px] overflow-y-scroll bg-gray-50 h-[250px] p-1">
                 {results?.length > 0 ? (
                   <ul className="space-y-2">
                     {results.map((playlist) => (
@@ -237,7 +237,7 @@ const Playlist = () => {
       </div>
 
       <h2 className="w-full px-3 mt-6 block">Spotify Playlists</h2>
-      <div className="w-full grid grid-cols-2 place-items-center content-center p-2 px-3 gap-3 overflow-y-scroll">
+      <div className="w-full grid grid-cols-5 sm:grid-cols-2 place-items-center content-center p-2 px-3 gap-3 overflow-y-scroll">
         {details?.map((i) => (
           <Link
             key={i._id}
@@ -253,7 +253,7 @@ const Playlist = () => {
         ))}
       </div>
       <h2 className="w-full px-3 mt-6 block">Custom Playlists</h2>
-      <div className="w-full grid grid-cols-2 place-items-center content-center p-2 px-3 gap-3 overflow-y-scroll">
+      <div className="w-full grid grid-cols-5 sm:grid-cols-2 place-items-center content-center p-2 px-3 gap-3 overflow-y-scroll">
         {playlistDetails?.data?.map((i) => (
           <Link
             to={`/playlists/${i._id}`}
