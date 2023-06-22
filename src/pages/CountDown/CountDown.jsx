@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { API } from "../../utils/URL";
 import TopNav from "../../components/TopNav/TopNav";
+import { AiFillClockCircle } from "react-icons/ai";
 
 const CountDown = () => {
   const [details, setDetails] = useState([]);
@@ -64,28 +65,33 @@ const CountDown = () => {
 
   return (
     <TopNav routeLink={"/"} barTitle={"Count Down"}>
-      <div className="w-full flex flex-col items-center justify-center p-2 gap-3 overflow-y-scroll mt-10">
+      <div className="w-full flex flex-col items-center justify-center p-2 gap-3 overflow-y-scroll mt-24">
         <div className="flex items-center justify-center mt-2">
           <img
             className="w-[90%]"
-            src="https://i.postimg.cc/W1Sx56DM/cccc.jpg"
+            src="https://i.postimg.cc/jSjThkwz/auspicious-copper-kalash-with-coconut-flowers-leaves-arranged-puja-466689-23721-removebg-preview-1.png"
             alt=""
           />
         </div>
         <div className="text-center mt-2 space-y-2">
           <p className="text-[1.3rem] font-medium">The best is yet to come!</p>
-          <p className="text-[1rem] text-[#f79489] font-medium">
-            {days} Days : {hours} Hours : {minutes} Minutes
+          <p className="text-[20px] p-2 flex items-center justify-center gap-2 rounded-md bg-[#F2A559] text-[#fff] font-medium">
+            <span>
+              <AiFillClockCircle />
+            </span>{" "}
+            <span>
+              {days} Days : {hours} Hours{" "}
+            </span>
           </p>
         </div>
-        <div className="mt-3 flex items-center justify-center">
+        {/* <div className="mt-3 flex items-center justify-center">
           <Link
             to="/calender"
             className="bg-gray-200 text-[1rem] text-[#f79489] p-2 px-7 rounded-3xl active:scale-95"
           >
             Events
           </Link>
-        </div>
+        </div> */}
       </div>
     </TopNav>
   );

@@ -22,18 +22,6 @@ import HomeDesk from "./desktopPages/HomeDesk/HomeDesk";
 //bgData
 import { bgData } from "./data";
 
-// Lazy loaded components
-// const CountDown = lazy(() => import("./pages/CountDown/CountDown"));
-// const Calender = lazy(() => import("./pages/Calender/Calender"));
-// const GiftRegistry = lazy(() => import("./pages/GiftRegistry/GiftRegistry"));
-// const ImageHub = lazy(() => import("./pages/ImgHub/ImageHub"));
-// const ImageLists = lazy(() => import("./pages/ImgHub/ImageLists"));
-// const Playlist = lazy(() => import("./pages/Playlist/Playlist"));
-// const Polls = lazy(() => import("./pages/Polls/Polls"));
-// const VotePoll = lazy(() => import("./pages/Polls/VotePoll"));
-// const VideoGallery = lazy(() => import("./pages/VideoGallery/VideoGallery"));
-// const VideoLists = lazy(() => import("./pages/VideoGallery/VideoLists"));
-// const CustomPlaylists = lazy(() => import("./pages/Playlist/CustomPlaylists"));
 
 const App = () => {
   const navigate = useNavigate();
@@ -75,15 +63,11 @@ const App = () => {
 
   return (
     <Suspense fallback={<Loading />}>
-      <div
-        className="relative flex items-center justify-center w-screen mx-auto h-screen"
-        // style={{
-        //   background: `url(${backgroundImage}) center/cover`,
-        // }}
-      >
+      <div className="relative flex items-center justify-center w-screen mx-auto h-screen">
         {/* -------------------- DESKTOP VIEW START --------------- */}
         <div className="  relative w-full h-full m-auto bg-transparent">
           <Routes>
+            {/* Home */}
             <Route
               path={`/file/close/a/:id`}
               element={<HomeDesk backgroundImage={backgroundImage} />}
@@ -100,9 +84,54 @@ const App = () => {
               path={`/file/close/d/:id`}
               element={<HomeDesk backgroundImage={backgroundImage} />}
             />
+            {/* Image Hub */}
+            <Route path="/image_hub" element={<ImageHub />} />
+            <Route path="/image_hub/images/:id" element={<ImageLists />} />
+            {/* Video Gallery */}
+            <Route path="/video_gallery" element={<VideoGallery />} />
+            <Route path="/video_gallery/videos/:id" element={<VideoLists />} />
+            {/* Polls */}
+            <Route path="/polls" element={<Polls />} />
+            <Route path="/poll/:id" element={<VotePoll />} />
+            {/* Count Down */}
+            <Route path="/count_down" element={<CountDown />} />
+            {/* Calender */}
+            <Route path="/calender" element={<Calender />} />
+            {/* Calender */}
+            <Route path="/event/:id" element={<Event />} />
+            {/* Gift Registry */}
+            <Route path="/gift_registry" element={<GiftRegistry />} />
+            {/* Playlist */}
+            <Route path="/playlists" element={<Playlist />} />
+            {/* Playlist */}
+            <Route path="/playlists/:id" element={<CustomPlaylists />} />
           </Routes>
         </div>
         {/* -------------------- DESKTOP VIEW END --------------- */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         {/* -------------------- MOBILE VIEW START --------------- */}
         <div className="hidden relative w-[330px] h-[560px] items-center justify-center border-gray-200 rounded-md bg-white flex-col shadow-[0_3px_30px_rgba(0,0,0,0.25)] overflow-hidden overflow-y-scroll sm:h-full sm:w-full">
           {loading ? (
@@ -110,44 +139,65 @@ const App = () => {
           ) : (
             <Routes>
               {/* close */}
-              <Route path={`/file/close/a/:id`} element={<Home />} />
-              <Route path={`/file/close/b/:id`} element={<Home />} />
-              <Route path={`/file/close/c/:id`} element={<Home />} />
-              <Route path={`/file/close/d/:id`} element={<Home />} />
+              {/* <Route path={`/file/close/a/:id`} element={<Home />} /> */}
+              {/* <Route path={`/file/close/b/:id`} element={<Home />} /> */}
+              {/* <Route path={`/file/close/c/:id`} element={<Home />} /> */}
+              {/* <Route path={`/file/close/d/:id`} element={<Home />} /> */}
               {/* general */}
-              <Route path={`/file/general/a/:id`} element={<Home />} />
-              <Route path={`/file/general/b/:id`} element={<Home />} />
-              <Route path={`/file/general/c/:id`} element={<Home />} />
-              <Route path={`/file/general/d/:id`} element={<Home />} />
+              {/* <Route path={`/file/general/a/:id`} element={<Home />} /> */}
+              {/* <Route path={`/file/general/b/:id`} element={<Home />} /> */}
+              {/* <Route path={`/file/general/c/:id`} element={<Home />} /> */}
+              {/* <Route path={`/file/general/d/:id`} element={<Home />} /> */}
               {/* Image Hub */}
               {/* <Route path={`/file/${storedType}/${theme}/image_hub`} element={<ImageHub />} /> */}
-              <Route path="/image_hub" element={<ImageHub />} />
-              <Route path="/image_hub/images/:id" element={<ImageLists />} />
+              {/* <Route path="/image_hub" element={<ImageHub />} /> */}
+              {/* <Route path="/image_hub/images/:id" element={<ImageLists />} /> */}
               {/* Video Gallery */}
-              <Route path="/video_gallery" element={<VideoGallery />} />
+              {/* <Route path="/video_gallery" element={<VideoGallery />} />
               <Route
                 path="/video_gallery/videos/:id"
                 element={<VideoLists />}
-              />
+              /> */}
               {/* Polls */}
-              <Route path="/polls" element={<Polls />} />
-              <Route path="/poll/:id" element={<VotePoll />} />
+              {/* <Route path="/polls" element={<Polls />} />
+              <Route path="/poll/:id" element={<VotePoll />} /> */}
               {/* Count Down */}
-              <Route path="/count_down" element={<CountDown />} />
+              {/* <Route path="/count_down" element={<CountDown />} /> */}
               {/* Calender */}
-              <Route path="/calender" element={<Calender />} />
+              {/* <Route path="/calender" element={<Calender />} /> */}
               {/* Calender */}
-              <Route path="/event/:id" element={<Event />} />
+              {/* <Route path="/event/:id" element={<Event />} /> */}
               {/* Gift Registry */}
-              <Route path="/gift_registry" element={<GiftRegistry />} />
+              {/* <Route path="/gift_registry" element={<GiftRegistry />} /> */}
               {/* Playlist */}
-              <Route path="/playlists" element={<Playlist />} />
+              {/* <Route path="/playlists" element={<Playlist />} /> */}
               {/* Playlist */}
-              <Route path="/playlists/:id" element={<CustomPlaylists />} />
+              {/* <Route path="/playlists/:id" element={<CustomPlaylists />} /> */}
             </Routes>
           )}
         </div>
         {/* -------------------- MOBILE VIEW END --------------- */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <ChatBotHelper />
       </div>
     </Suspense>

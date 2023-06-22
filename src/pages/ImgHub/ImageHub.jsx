@@ -44,15 +44,16 @@ const ImageHub = () => {
     <>
         <TopNav routeLink={"/"} barTitle={"Image Hub"}>
           {/* DISPLAY COLLECTIONS START*/}
-          <div className="w-full grid grid-cols-2 grid-rows-2 p-2 gap-3 overflow-y-scroll mt-1">
+          <div className=" bg-[#F3E1D8] w-full grid grid-cols-2 grid-rows-2 p-2 gap-3 overflow-y-scroll mt-2">
             {imgCollections?.map((x) => (
               <div
                 key={x._id}
                 className="flex  flex-col items-center w-full h-fit rounded-xl overflow-hidden"
               >
                 <Link to={`/image_hub/images/${x._id}`}>
-                  <div className="border overflow-hidden w-[140px] h-[140px] rounded-[8px] p-1 grid grid-cols-2 grid-rows-2 gap-1">
-                    <img
+                  <div className="border overflow-hidden w-[140px] h-[140px] rounded-[8px]  gap-1">
+                    <img  src="https://i.postimg.cc/Nfksftt7/And-so-the-adventure-begins.png" alt="" />
+                    {/* <img
                       className=" w-[100%] h-[100%] rounded-sm overflow-hidden object-cover active:scale-95"
                       src={x?.photos[0]?.url}
                       // src="https://i.postimg.cc/YC900BdS/pngegg.png"
@@ -87,10 +88,10 @@ const ImageHub = () => {
                       }
                       // src="https://i.postimg.cc/YC900BdS/pngegg.png"
                       alt=""
-                    />
+                    /> */}
                   </div>
                 </Link>
-                <p className="text-center text-[13px] p-1">
+                <p className=" text-[#8A553C] text-center text-[13px] p-1">
                   {x.collectionName}
                 </p>
               </div>

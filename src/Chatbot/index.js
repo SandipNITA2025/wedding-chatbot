@@ -84,7 +84,7 @@ Review.defaultProps = {
 };
 
 const CHATBOT_THEME = {
-  background: "#FFFEFC",
+  background: "#F0D7BE",
   fontFamily: "Roboto",
   headerBgColor: "#F2A559",
   headerFontColor: "#fff",

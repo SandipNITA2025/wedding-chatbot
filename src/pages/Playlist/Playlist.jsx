@@ -167,7 +167,7 @@ const Playlist = () => {
               {selectedSongs.map((song) => (
                 <div
                   key={song.id}
-                  className="selectedSong border border-green-200 p-1 mt-2 rounded-3xl flex  items-center gap-2"
+                  className="selectedSong border border-[#f2a559] p-1 mt-2 rounded-3xl flex  items-center gap-2"
                 >
                   <RxCrossCircled
                     className="active:scale-95 text-red-500 cursor-pointer"
@@ -243,7 +243,7 @@ const Playlist = () => {
             key={i._id}
             target="_blank"
             to={i.playListUrl}
-            className="active:scale-95 cursor-pointer w-[95%] flex items-center gap-3 border border-green-200 rounded-[4px] hover:bg-green-50 p-[.4rem] px-3"
+            className="active:scale-95 cursor-pointer w-[95%] flex items-center gap-3 border border-[#f2a559] rounded-[4px] hover:bg-[#f2a559] p-[.4rem] px-3"
           >
             <BsSpotify size={20} className="text-green-500" />
             <span className="overflow-hidden text-ellipsis whitespace-nowrap">
@@ -258,7 +258,7 @@ const Playlist = () => {
           <Link
             to={`/playlists/${i._id}`}
             key={i._id}
-            className="active:scale-95 cursor-pointer w-[95%] flex items-center gap-2 border border-green-200 rounded-[4px] hover:bg-green-50 p-[.4rem] px-3"
+            className="active:scale-95 cursor-pointer w-[95%] flex items-center gap-2 border border-[#f2a559] rounded-[4px] hover:bg-[#f2a559] p-[.4rem] px-3"
           >
             <span className=" min-w-[20px]">
               <BiListUl size={20} className="text-green-500" />

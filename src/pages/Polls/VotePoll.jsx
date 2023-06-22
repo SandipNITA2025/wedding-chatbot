@@ -72,8 +72,8 @@ const VotePoll = () => {
   return (
     <TopNav routeLink={"/polls"} barTitle={"Vote Poll"}>
       <div className=" w-full flex justify-center items-center p-2  overflow-y-scroll mt-1">
-        <div className=" w-[95%] border p-2 rounded-md">
-          <p className=" text-[#F7998E] text-[1.2rem] font-bold mb-3">
+        <div className=" bg-[#F0D7BE] w-[95%] border p-2 rounded-md">
+          <p className=" text-[#8A553C] text-[1.2rem] font-bold mb-3">
             {getPoll?.question}
           </p>
 
@@ -97,10 +97,10 @@ const VotePoll = () => {
                       wrapperStyle={{ marginTop: "5px" }}
                       animation={radioButton}
                     />
-                    <p className="text-[#F7998E]">{option.text}</p>
+                    <p className="text-[#8A553C]">{option.text}</p>
                   </div>
                   <div className=" flex items-center">
-                    <span className=" text-sm text-[#F7998E]">
+                    <span className=" text-sm text-[#8A553C]">
                       {optionPercentage}%
                     </span>
                   </div>

@@ -55,7 +55,7 @@ const ImageLists = () => {
                 className=" flex-wrap relative flex items-center justify-center flex-col"
               >
                 <img
-                  className="border border-gray-200 w-full h-[130px] rounded-sm overflow-hidden object-contain cursor-pointer"
+                  className="border border-gray-400 w-full h-[130px] rounded-sm overflow-hidden object-contain cursor-pointer"
                   src={x.url}
                   alt={x.name}
                   onClick={() => handleImageModel(x)}
