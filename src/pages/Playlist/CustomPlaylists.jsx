@@ -29,7 +29,7 @@ const CustomPlaylists = () => {
   return (
     <TopNav routeLink={"/playlists"} barTitle={getLists.playlistName}>
       <div className="w-full px-3 mt-3 flex items-center gap-3 flex-col">
-        <div className=" w-full grid gap-1 grid-cols-2">
+        <div className=" w-full grid gap-1 grid-cols-5 sm:grid-cols-2">
           {getLists.songs?.map((i) => (
             <Link
               to={i.externalUrl}

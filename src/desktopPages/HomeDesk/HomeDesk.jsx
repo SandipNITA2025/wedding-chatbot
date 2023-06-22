@@ -103,7 +103,7 @@ const HomeDesk = ({ backgroundImage }) => {
     <div className=" w-full  h-full flex flex-col items-center sm:min-h-[700px] relative">
       <Navbar />
       {/* UPPER CONTAINER */}
-      <div className=" relative  overflow-hidden w-full flex-1 h-[54%] sm:min-h-[40%]  ">
+      <div className=" relative  overflow-hidden w-full flex-1 h-[55%] sm:min-h-[40%]  ">
         <img className=" sm:object-left" src={bgbg} alt="" />
         <div className=" z-20 sm:hidden absolute  top-[50%] px-10 translate-y-[-50%] w-[530px] flex flex-col gap-1">
           <h2 className=" text-[40px] font-semibold text-white">Wedding App</h2>
