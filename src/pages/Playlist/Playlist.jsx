@@ -14,6 +14,7 @@ const Playlist = () => {
   const [results, setResults] = useState([]);
   const [selectedSongs, setSelectedSongs] = useState([]);
   const [playlistName, setPlaylistName] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,6 +35,7 @@ const Playlist = () => {
   }, []);
 
   const searchSpotify = () => {
+    setLoading(true);
     if (query.trim() === "") {
       setResults([]);
       return;
@@ -74,6 +76,9 @@ const Playlist = () => {
           })
           .catch((error) => {
             console.error("Error fetching search results:", error);
+          })
+          .finally(() => {
+            setLoading(false);
           });
       })
       .catch((error) => {
@@ -156,7 +161,7 @@ const Playlist = () => {
           <form className="w-full relative">
             <h2 className="w-full mb-1 block">Suggest Song</h2>
             <input
-              className="rounded-sm w-[30%] p-[.4rem] sm:w-full border"
+              className="rounded-sm w-[30%] p-[.4rem] sm:w-full "
               type="search"
               value={query}
               onChange={handleQueryChange}
@@ -184,7 +189,7 @@ const Playlist = () => {
               <>
                 <h2 className="w-full py-1 block">Playlist Name</h2>
                 <input
-                  className="rounded-sm p-[.4rem] w-[30%] sm:w-full border"
+                  className="rounded-sm p-[.4rem] w-[30%] sm:w-full "
                   type="text"
                   placeholder="Enter playlist name"
                   value={playlistName}
@@ -209,22 +214,26 @@ const Playlist = () => {
               <div className="searchLists w-[30%] sm:w-full border border-gray-200 rounded-[4px] absolute top-[70px] overflow-y-scroll bg-gray-50 h-[250px] p-1">
                 {results?.length > 0 ? (
                   <ul className="space-y-2">
-                    {results.map((playlist) => (
-                      <li
-                        className="bg-white p-1 border border-white hover:border-gray-300 cursor-pointer rounded-md flex items-center gap-2 active:scale-95"
-                        key={playlist?.id}
-                        onClick={() => selectSong(playlist)}
-                      >
-                        <img
-                          alt=""
-                          className="rounded-md object-cover w-9 h-9"
-                          src={playlist?.images[0]?.url}
-                        />
-                        <p className="text-[13px] w-[100%] overflow-hidden text-ellipsis whitespace-nowrap">
-                          {playlist?.name}
-                        </p>
-                      </li>
-                    ))}
+                    {loading ? (
+                      <p>Loading...</p> // Render loading state while fetching results
+                    ) : (
+                      results.map((playlist) => (
+                        <li
+                          className="bg-white p-1 border border-white hover:border-gray-300 cursor-pointer rounded-md flex items-center gap-2 active:scale-95"
+                          key={playlist?.id}
+                          onClick={() => selectSong(playlist)}
+                        >
+                          <img
+                            alt=""
+                            className="rounded-md object-cover w-9 h-9"
+                            src={playlist?.images[0]?.url}
+                          />
+                          <p className="text-[13px] w-[100%] overflow-hidden text-ellipsis whitespace-nowrap">
+                            {playlist?.name}
+                          </p>
+                        </li>
+                      ))
+                    )}
                   </ul>
                 ) : (
                   <p>Search results not found.</p>

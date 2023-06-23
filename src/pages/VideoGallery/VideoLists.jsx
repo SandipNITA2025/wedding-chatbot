@@ -39,14 +39,14 @@ const VideoLists = () => {
     >
       {/* DISPLAY COLLECTIONS LISTS START*/}
       <div className="  w-full overflow-y-scroll mt-1">
-        <div className="grid grid-cols-2 p-2 gap-3 w-full h-fit rounded-xl overflow-hidden">
+        <div className="grid grid-cols-6 sm:grid-cols-2 p-2 gap-3 w-full h-fit rounded-xl overflow-hidden">
           {getLists?.videos?.map((x) => (
             <div
               key={x._id}
               className=" flex-wrap relative flex items-center justify-center flex-col"
             >
               <video
-                className="border border-gray-200 w-full h-[130px] rounded-sm overflow-hidden cursor-pointer object-contain"
+                className="border border-gray-300 w-full h-[130px] rounded-sm overflow-hidden cursor-pointer object-contain"
                 src={x.url}
                 alt={x.name}
                 onClick={() => handleImageModel(x)}
@@ -67,7 +67,7 @@ const VideoLists = () => {
         </div>
         {/* Image Popup Model */}
         {selectedImage && (
-          <div className="fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]  w-[329px] h-[560px] sm:w-full sm:h-full  rounded-md flex items-center justify-center bg-black bg-opacity-60">
+          <div className="fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full h-full  rounded-md flex items-center justify-center bg-black bg-opacity-60">
             <div className="relative max-w-3xl max-h-full w-full h-auto">
               <video
                 controls

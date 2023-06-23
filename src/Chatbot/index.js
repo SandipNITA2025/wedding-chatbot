@@ -7,12 +7,12 @@ import { API } from "../utils/URL";
 
 const BotImage = ({ Imgurl }) => {
   if (!Imgurl) {
-    return <div className="imagebox">NO PHOTO AVAILABLE</div>;
+    return <div className="imagebox bg-[#f8bb7e]">NO PHOTO AVAILABLE</div>;
   }
 
   return (
-    <div className="imagebox">
-      <img src={Imgurl} alt="wedimg" width="300px" />
+    <div className="imagebox bg-[#f8bb7e]">
+      <img className=" bg-[#f8bb7e]" src={Imgurl} alt="wedimg" width="300px" />
     </div>
   );
 };
@@ -195,7 +195,7 @@ const ChatBotHelper = () => {
     {
       id: "more-pics",
       component: photoUrl ? (
-        <div className="image-container">
+        <div className="image-container bg-[#f8bb7e]">
           {morePics.map((pic, index) => (
             <BotImage key={index} Imgurl={pic.url} />
           ))}

@@ -77,7 +77,7 @@ const CountDown = () => {
           <p className="text-[1.3rem] font-medium">The best is yet to come!</p>
           <p className="text-[20px] p-2 flex items-center justify-center gap-2 rounded-md bg-[#F2A559] text-[#fff] font-medium">
             <span>
-              <AiFillClockCircle />
+              <AiFillClockCircle className=" text-[#8A553C]" />
             </span>{" "}
             <span>
               {days} Days : {hours} Hours{" "}
