@@ -99,8 +99,6 @@ const HomeDesk = ({ backgroundImage }) => {
     },
   ];
 
-
-
   const location = useLocation();
   const path = location.pathname.split("/")[4];
   const theme = location.pathname.split("/")[3];
@@ -111,7 +109,6 @@ const HomeDesk = ({ backgroundImage }) => {
     localStorage.setItem("theme", theme);
     localStorage.setItem("type", type);
   }, [path, type, theme]);
-
 
   return (
     <div className=" w-full  h-full flex flex-col items-center sm:min-h-[700px] relative">
@@ -133,22 +130,32 @@ const HomeDesk = ({ backgroundImage }) => {
 
         {/* Hati */}
         <div className="w-full overflow-hidden  z-10 h-full absolute bottom-0 sm:bottom-[-20px] flex items-start justify-center left-[50%] translate-x-[-50%]">
-          <img
-            className="w-full md:w-[85%] object-contain"
-            src={Hati}
-            alt=""
-          />
+          <img className="w-full md:w-[85%] object-contain" src={Hati} alt="" />
         </div>
       </div>
       {/* LOWER CONTAINER */}
-      <div className=" w-full px-10 sm:px-10 sm:py-3 bg-[#F3E1D8]  flex-1 sm:flex-[2] flex   h-full">
-        <div className=" w-[70%] sm:w-full  border-black">
+      <div className=" relative  w-full px-10 sm:px-10 sm:py-3 bg-[#F8F0EC] overflow-hidden flex-1 sm:flex-[2] flex  h-full">
+        <div className=" absolute w-full h-[600px] flex items-start justify-start top-0 right-0 mx-auto">
+          <div className="flex items-start w-full h-[600px] ">
+            <img
+              className=" object-contain"
+              src="https://i.postimg.cc/zXGCSqJD/bgmandala-1.png"
+              alt=""
+            />
+            <img
+              className=" object-contain"
+              src="https://i.postimg.cc/zXGCSqJD/bgmandala-1.png"
+              alt=""
+            />
+          </div>
+        </div>
+        <div className=" bg-transparent z-[2] w-[70%] sm:w-full  border-black">
           {/* TEXT */}
           <div className="mt-2">
-            <h2 className=" z-[50] sm:hidden text-[36px] text-[#8A553C]">
+            <h2 className=" z-[50] py-2 sm:hidden text-[36px] text-[#8A553C]">
               Lörem ip rende exoment
             </h2>
-            <p className=" w-[70%] sm:hidden text-[14px] text-[#8A553C]">
+            <p className=" w-[70%] pb-3 sm:hidden text-[14px] text-[#8A553C]">
               Ivera. Prende exoment: gigad för tralig nehahusade. Ivera. Prende
               exoment: gigad för Ivera. Prende exoment: gigad för tralig
               nehahusade. Ivera. Prende exoment: gigad för
@@ -160,7 +167,7 @@ const HomeDesk = ({ backgroundImage }) => {
           {/* MENUS */}
           <div className=" mt-4 w-full grid grid-cols-5 place-content-start gap-8 grid-rows-2 sm:grid-cols-3 sm:grid-rows-3 sm:place-items-center">
             {iconsData.map((i) => (
-              <Link to={i.link}>
+              <Link className=" w-fit" to={i.link}>
                 <div
                   className={`w-[71px] rounded-lg p-[4px] overflow-hidden active:scale-95 h-[71px] flex flex-col gap-1 items-center justify-center  cursor-pointer`}
                   style={{
@@ -177,9 +184,9 @@ const HomeDesk = ({ backgroundImage }) => {
       </div>
       {/* BOTTOMBAR START */}
       <div className=" hidden buttom-nav fixed bottom-0 h-[60px] bg-transparent w-full p-2 sm:flex items-center justify-around">
-        <div className=" cursor-pointer w-[43px] h-[43px] flex items-center justify-center rounded-full bg-[#F2A559] text-[#8A553C] active:scale-95">
+        {/* <div className=" cursor-pointer w-[43px] h-[43px] flex items-center justify-center rounded-full bg-[#F2A559] text-[#8A553C] active:scale-95">
           <AiFillHome size={22} />
-        </div>
+        </div> */}
         {/* <div className=" cursor-pointer text-[#F79489] active:scale-95">
           <BiMessageDetail size={22} />
         </div>

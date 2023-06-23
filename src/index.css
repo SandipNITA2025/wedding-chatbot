@@ -10,8 +10,23 @@
 ::-webkit-scrollbar {
   width: 0;
 }
-body{
-  background-color: #F3E1D8;
+body {
+  background-color: #f8f0ec;
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+}
+body::before {
+  position: fixed;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://i.postimg.cc/zXGCSqJD/bgmandala-1.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 .App {
   font-family: sans-serif;
@@ -124,3 +139,10 @@ input:focus {
   100% { transform: translateX(-100%); }
 } */
 
+.mandala::after {
+  content: "";
+  background: url("https://i.postimg.cc/zXGCSqJD/bgmandala-1.png");
+  position: absolute;
+  top: 0;
+  left: 0;
+}

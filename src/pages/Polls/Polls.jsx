@@ -34,7 +34,7 @@ const Polls = () => {
   };
 
   const getBackgroundColor = () => {
-    const colors = ['#F2A559', '#F53C75', '#8A553C'];
+    const colors = ["#F2A559", "#F53C75", "#8A553C"];
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
     return randomColor;
   };
@@ -42,7 +42,16 @@ const Polls = () => {
   return (
     <TopNav routeLink={"/"} barTitle={"Polls"}>
       {/* DISPLAY POLLS START*/}
-      <div className="w-full grid grid-cols-5 sm:grid-cols-2 grid-rows-2 p-2 gap-3 overflow-y-scroll mt-2">
+      <div className=" relative w-full grid grid-cols-5 sm:grid-cols-2 grid-rows-2 p-2 gap-3 overflow-y-scroll mt-2">
+        <div className=" absolute w-full h-full z-[-2] flex items-start justify-start top-0 right-0 mx-auto">
+          <div className="flex items-start w-full h-full">
+            <img
+              className=" object-contain"
+              src="https://i.postimg.cc/zXGCSqJD/bgmandala-1.png"
+              alt=""
+            />
+          </div>
+        </div>
         {getPolls.map((x) => (
           <div
             key={x._id}

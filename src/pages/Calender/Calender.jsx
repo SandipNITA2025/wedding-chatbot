@@ -48,20 +48,27 @@ const Events = () => {
 
   return (
     <TopNav routeLink={"/"} barTitle={"Events Calendar"}>
-      <div className="w-full flex flex-col items-center justify-center p-2 gap-4 overflow-y-scroll mt-2">
+      <div className=" relative overflow-hidden w-full  flex flex-col items-center  p-2 gap-0 overflow-y-scroll">
+      
         {details?.[0]?.events?.map((data, index) => (
           <div
             key={index}
-            className="box w-full h-[50px] hover:bg-gray-50  overflow-hidden  flex items-center"
+            className={` box w-[40%] pl-2 sm:w-full hover:bg-[#F2A559] overflow-hidden flex m-3 items-center rounded-2xl ${
+              index % 2 === 0 ? "bg-[#F2A559]" : "bg-[#f5c79069]"
+            }`}
           >
-            <div className="left  w-full flex-[2.5] px-2">
-              <p className="text-[13px]">{formatDate(data.eventDate)}</p>
-              <p className="text-[12px] text-[#F79489]">
-                {formatDay(data.eventDate)}, {data.eventTime}
+            <div className="left pl-2 w-full flex-[2.5] px-2">
+              <p className="text-[13px] pt-2 text-[#8A553C]">
+                {" "}
+                {data.eventName}
               </p>
-              <p className=" overflow-hidden text-ellipsis whitespace-nowrap text-[11px] flex items-center">
-                <MdLocationPin size={13} className="text-[#F79489]" />
-                <span
+              <p className="text-[12px] text-[#FFF] pb-2">
+                {formatDate(data.eventDate)},{formatDay(data.eventDate)}{" "}
+                {data.eventTime}
+              </p>
+              {/* <p className=" overflow-hidden text-ellipsis whitespace-nowrap text-[11px] flex items-center"> */}
+              {/* <MdLocationPin size={13} className="text-[#F79489]" /> */}
+              {/* <span
                   // to={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
                   //   data.eventLocation
                   // )}`}
@@ -70,17 +77,15 @@ const Events = () => {
                   className=" w-[110px]  overflow-hidden text-ellipsis whitespace-nowrap"
                 >
                   {data.eventLocation}
-                </span>
-              </p>
+                </span> */}
+              {/* </p> */}
             </div>
-            <div className="right w-full flex-[3]">
+            <div className="right w-full flex-[1] m-1">
               <Link to={`/event/${data._id}`}>
                 <button
-                  className={`${
-                    index % 2 === 0 ? "bg-[#E7B6C7]" : "bg-[#F79489]"
-                  } active:scale-95 w-[95%] p-[14px] text-[14px] text-white`}
+                  className={` active:scale-95 w-[90%] p-[5px] text-[14px] text-white bg-[#F53C75] rounded-2xl`}
                 >
-                  {data.eventName}
+                  View More
                 </button>
               </Link>
             </div>

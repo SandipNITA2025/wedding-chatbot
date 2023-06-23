@@ -40,7 +40,7 @@ const Event = () => {
 
   return (
     <TopNav routeLink={"/calender"} barTitle={getEvent.eventName}>
-      <div className="w-full flex flex-col items-center justify-center p-2 gap-4 overflow-y-scroll mt-1">
+      <div className="w-full flex flex-col items-center h-full p-2 gap-4 overflow-y-scroll mt-1">
         <div className="relative w-full">
           <div
             className="h-[200px] sm:h-[250px] overflow-hidden rounded-xl"
@@ -55,12 +55,13 @@ const Event = () => {
           >
             <div className="absolute bottom-0 flex items-center gap-2 justify-center text-white p-2">
               {/* <BiParty size={24} /> */}
-              <h2 className=" text-2xl font-semibold">{getEvent.eventName}</h2>
+              <h2 className=" text-2xl font-semibold text-white">{getEvent.eventName}</h2>
             </div>
           </div>
         </div>
 
-        <div className=" flex  flex-col items-start w-[95%]">
+        <div className=" flex  flex-col items-start w-[95%] bg-[#F2A559] p-4 rounded-2xl">
+       
           {/* <h2 className=" text-2xl font-semibold">{getEvent.eventName}</h2> */}
           <p className="text-[14px] flex items-center gap-1 font-medium">
             <MdOutlineDateRange />
@@ -68,19 +69,20 @@ const Event = () => {
               {formatDay(getEvent.eventDate)}, {formatDate(getEvent.eventDate)}
             </span>
           </p>
-          <p className="text-[14px] flex items-center gap-1 font-medium">
+          <p className="text-[14px] flex items-center gap-1 font-medium text-[#8A553C]">
             <AiOutlineFieldTime />
             <span>
               {formatDay(getEvent.eventDate)}, {getEvent.eventTime}
             </span>
           </p>
           <div className="text-[14px] flex items-start gap-0 font-semibold">
-           <div className=" min-w-[20px]">
+           <div className=" min-w-[20px] text-[#8A553C]">
            <MdOutlineLocationOn/>
            </div>
             <span>{getEvent.eventLocation}</span>
           </div>
-
+     </div>
+     <div className=" flex  flex-col items-start w-[95%]">
           <div className=" mt-3 w-full flex flex-col items-center justify-center m-auto">
             <iframe
               title="Google Maps"
@@ -91,14 +93,14 @@ const Event = () => {
               )}`}
               allowFullScreen
             ></iframe>
-            <div className="mt-2">
+            <div className="mt-4">
               <Link
                 to={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
                   getEvent.eventLocation
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white p-2 mt-1 rounded-sm px-3 bg-[#F79489]"
+                className="text-white p-3 px-3 bg-[#F53C75] rounded-2xl"
               >
                 Follow Map
               </Link>

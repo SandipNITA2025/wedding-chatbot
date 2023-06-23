@@ -71,7 +71,7 @@ const GiftRegistry = () => {
                 />
               </div>
             </div>
-            <p className="text-[#8A553C] font-['Great_Vibes'] text-justify text-[1.2rem] mt-1">
+            <p className="text-[#8A553C]  text-justify text-[1rem] mt-1">
               Your love and support are the most precious gifts we could
               receive. If you would like to give a gift, we have created a
               registry to make it easier for you. Thank you for celebrating with
@@ -85,7 +85,7 @@ const GiftRegistry = () => {
                 <BsClipboard2CheckFill size={20} className="text-[#8A553C]" />
                 <h2 className="text-[#8A553C]">Our Checklist</h2>
               </div>
-              <hr className="w-full h-[2.2px] bg-[#8A553C]" />
+              {/* <hr className="w-full h-[2.2px] bg-[#8A553C]" /> */}
               <div className="w-full space-y-3 mt-2">
                 {/* options */}
                 {details.map((item) => (
@@ -97,18 +97,18 @@ const GiftRegistry = () => {
                   >
                     {item.receivedGift ? (
                       <IoMdCheckmarkCircleOutline
-                        className="cursor-pointer"
+                        className="cursor-pointer text-white"
                         size={20}
                       />
                     ) : (
                       <FiCircle
-                        className="cursor-pointer"
+                        className="cursor-pointer text-white"
                         onClick={() => giftUpdateTrue(item._id)}
                         size={19}
                       />
                     )}
 
-                    <p className="text-[.9rem]">{item.giftName}</p>
+                    <p className=" text-[#8A553C] text-[.9rem]">{item.giftName}</p>
                   </div>
                 ))}
               </div>
