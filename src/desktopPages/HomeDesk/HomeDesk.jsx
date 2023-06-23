@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "react-multi-carousel/lib/styles.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import { FiSettings } from "react-icons/fi";
 import { BiMessageDetail } from "react-icons/bi";
@@ -98,6 +98,20 @@ const HomeDesk = ({ backgroundImage }) => {
       bgColor: "#F2A559",
     },
   ];
+
+
+
+  const location = useLocation();
+  const path = location.pathname.split("/")[4];
+  const theme = location.pathname.split("/")[3];
+  const type = location.pathname.split("/")[2];
+
+  useEffect(() => {
+    localStorage.setItem("path", path);
+    localStorage.setItem("theme", theme);
+    localStorage.setItem("type", type);
+  }, [path, type, theme]);
+
 
   return (
     <div className=" w-full  h-full flex flex-col items-center sm:min-h-[700px] relative">
