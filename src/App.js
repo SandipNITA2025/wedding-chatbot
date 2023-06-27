@@ -73,15 +73,7 @@ const App = () => {
               element={<HomeDesk backgroundImage={backgroundImage} />}
             />
             <Route
-              path={`/file/close/b/:id`}
-              element={<HomeDesk backgroundImage={backgroundImage} />}
-            />
-            <Route
-              path={`/file/close/c/:id`}
-              element={<HomeDesk backgroundImage={backgroundImage} />}
-            />
-            <Route
-              path={`/file/close/d/:id`}
+              path={`/file/general/a/:id`}
               element={<HomeDesk backgroundImage={backgroundImage} />}
             />
             {/* Image Hub */}

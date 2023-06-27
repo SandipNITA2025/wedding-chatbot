@@ -55,13 +55,14 @@ const Event = () => {
           >
             <div className="absolute bottom-0 flex items-center gap-2 justify-center text-white p-2">
               {/* <BiParty size={24} /> */}
-              <h2 className=" text-2xl font-semibold text-white">{getEvent.eventName}</h2>
+              <h2 className=" text-2xl font-semibold text-white">
+                {getEvent.eventName}
+              </h2>
             </div>
           </div>
         </div>
 
         <div className=" flex  flex-col items-start w-[95%] bg-[#F2A559] p-4 rounded-2xl">
-       
           {/* <h2 className=" text-2xl font-semibold">{getEvent.eventName}</h2> */}
           <p className="text-[14px] flex items-center gap-1 font-medium">
             <MdOutlineDateRange />
@@ -76,13 +77,13 @@ const Event = () => {
             </span>
           </p>
           <div className="text-[14px] flex items-start gap-0 font-semibold">
-           <div className=" min-w-[20px] text-[#8A553C]">
-           <MdOutlineLocationOn/>
-           </div>
+            <div className=" min-w-[20px] text-[#8A553C]">
+              <MdOutlineLocationOn />
+            </div>
             <span>{getEvent.eventLocation}</span>
           </div>
-     </div>
-     <div className=" flex  flex-col items-start w-[95%]">
+        </div>
+        <div className=" flex  flex-col items-start w-[95%]">
           <div className=" mt-3 w-full flex flex-col items-center justify-center m-auto">
             <iframe
               title="Google Maps"
