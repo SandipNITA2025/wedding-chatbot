@@ -31,8 +31,26 @@ import {
 // import brownbox from "../../icons/box.png";
 import Hati from "../../icons/hati.png";
 import bgbg from "../../icons/bgbg.png";
+import { useState } from "react";
 
 const HomeDesk = ({ backgroundImage }) => {
+  const [ipAddress, setIPAddress] = useState("");
+  const browserID = navigator.userAgent;
+
+  useEffect(() => {
+    const fetchIPAddress = async () => {
+      try {
+        const response = await fetch("https://api.ipify.org/?format=json");
+        const data = await response.json();
+        setIPAddress(data.ip);
+      } catch (error) {
+        console.log("Error fetching IP address:", error);
+      }
+    };
+
+    fetchIPAddress();
+  }, []);
+
   const iconsData = [
     {
       id: 1,
@@ -100,15 +118,16 @@ const HomeDesk = ({ backgroundImage }) => {
   ];
 
   const location = useLocation();
-  const path = location.pathname.split("/")[4];
+  const pathID = location.pathname.split("/")[4];
   const theme = location.pathname.split("/")[3];
   const type = location.pathname.split("/")[2];
+  console.log(pathID);
 
   useEffect(() => {
-    localStorage.setItem("path", path);
+    localStorage.setItem("pathID", pathID);
     localStorage.setItem("theme", theme);
     localStorage.setItem("type", type);
-  }, [path, type, theme]);
+  }, [pathID, type, theme]);
 
   return (
     <div className=" w-full  h-full flex flex-col items-center sm:min-h-[700px] relative">
@@ -133,6 +152,10 @@ const HomeDesk = ({ backgroundImage }) => {
           <img className="w-full md:w-[85%] object-contain" src={Hati} alt="" />
         </div>
       </div>
+      {/* <div>
+      <h1>Browser ID</h1>
+      <p>{browserID}</p>
+    </div> */}
       {/* LOWER CONTAINER */}
       <div className=" relative  w-full px-10 sm:px-10 sm:py-3 bg-[#F8F0EC] overflow-hidden flex-1 sm:flex-[2] flex  h-full">
         <div className=" absolute w-full h-[600px] flex items-start justify-start top-0 right-0 mx-auto">

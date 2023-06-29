@@ -13,7 +13,7 @@ const CountDown = () => {
   const [minutes, setMinutes] = useState(0);
 
   useEffect(() => {
-    const storedPath = localStorage.getItem("path");
+    const storedPath = localStorage.getItem("pathID");
 
     axios
       .get(`${API}/api/mergedetails?authId=${storedPath}`)

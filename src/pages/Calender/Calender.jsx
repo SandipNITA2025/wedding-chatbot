@@ -11,7 +11,7 @@ const Events = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const storedPath = localStorage.getItem("path");
+        const storedPath = localStorage.getItem("pathID");
         const response = await axios.get(
           `${API}/api/auth/get-events?authId=${storedPath}`
         );

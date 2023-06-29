@@ -19,7 +19,7 @@ const Playlist = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const storedPath = localStorage.getItem("path");
+        const storedPath = localStorage.getItem("pathID");
         const response = await axios.get(
           `${API}/api/auth/get-playlists?authId=${storedPath}`
         );
@@ -108,7 +108,7 @@ const Playlist = () => {
   const handleToAddPlaylist = (e) => {
     e.preventDefault();
     const playlistData = {
-      authId: localStorage.getItem("path"),
+      authId: localStorage.getItem("pathID"),
       inviteType: "your-invite-type",
       playlistName: playlistName,
       songs: selectedSongs.map((song) => {
@@ -137,7 +137,7 @@ const Playlist = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const storedPath = localStorage.getItem("path");
+        const storedPath = localStorage.getItem("pathID");
         const response = await axios.get(
           `${API}/api/auth/suggest_playlist?authId=${storedPath}`
         );

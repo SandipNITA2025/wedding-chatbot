@@ -34,7 +34,7 @@ const App = () => {
   const [backgroundImage, setBackgroundImage] = useState(null);
 
   useEffect(() => {
-    const storedPath = localStorage.getItem("path");
+    const storedPath = localStorage.getItem("pathID");
     const theme = localStorage.getItem("theme");
     if (location.pathname === "/") {
       navigate(`/file/${storedType}/${theme}/${storedPath}`);

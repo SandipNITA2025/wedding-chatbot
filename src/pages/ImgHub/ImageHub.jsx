@@ -13,7 +13,7 @@ const ImageHub = () => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const storedPath = localStorage.getItem("path");
+        const storedPath = localStorage.getItem("pathID");
         const response = await axios.get(
           `${API}/api/auth/get-collection?authId=${storedPath}`
         );

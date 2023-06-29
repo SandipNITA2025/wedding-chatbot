@@ -11,7 +11,7 @@ const GiftRegistry = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const storedPath = localStorage.getItem("path");
+    const storedPath = localStorage.getItem("pathID");
 
     axios
       .get(`${API}/api/auth/get-giftlists?authId=${storedPath}`)

@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { ThemeProvider } from "styled-components";
 import axios from "axios";
 import { API } from "../utils/URL";
+import { Link } from "react-router-dom";
 
 const BotImage = ({ Imgurl }) => {
   if (!Imgurl) {
@@ -16,12 +17,57 @@ const BotImage = ({ Imgurl }) => {
     </div>
   );
 };
+const BotVideo = ({ Imgurl }) => {
+  if (!Imgurl) {
+    return <div className="imagebox bg-[#f8bb7e]">NO PHOTO AVAILABLE</div>;
+  }
 
-const BotLocation = ({ url, message }) => {
   return (
-    <div>
-      {message}
-      <iframe src={url} title="location"></iframe>
+    <div className="imagebox bg-[#f8bb7e]">
+      <video
+        controls
+        className=" bg-[#f8bb7e]"
+        src={Imgurl}
+        alt="wedimg"
+        width="300px"
+      />
+    </div>
+  );
+};
+
+// const BotLocation = ({ url, message }) => {
+//   return (
+//     <div>
+//       {message}
+//       <iframe src={url} title="location"></iframe>
+//     </div>
+//   );
+// };
+const BotLocation = ({ venue }) => {
+  return (
+    <div className=" flex items-center flex-col">
+      <p>{venue}</p>
+      <iframe
+        title="Google Maps"
+        className=" w-[100%] h-[200px]"
+        style={{ border: 0 }}
+        src={`https://www.google.com/maps/embed/v1/place?key=${`AIzaSyCqbdL5YFZ01wrU29cN-P-UQrxdBPLLUic&q`}=${encodeURIComponent(
+          venue
+        )}`}
+        allowFullScreen
+      ></iframe>
+      <div className="mt-4">
+        <Link
+          to={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+            venue
+          )}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white p-2 px-2 bg-[#F53C75] rounded-2xl"
+        >
+          Follow Map
+        </Link>
+      </div>
     </div>
   );
 };
@@ -30,20 +76,22 @@ const Review = ({ steps }) => {
   const { guestName, guestEmail } = steps;
 
   const handleSubmit = () => {
-    const storedPath = localStorage.getItem("path");
+    const pathID = localStorage.getItem("pathID");
+    // console.log(storedPath);
+
     const storedType = localStorage.getItem("type");
     const formData = {
-      loginId: storedPath,
       guestName: guestName.value,
       guestEmail: guestEmail.value,
       guestStatus: "Yes",
       inviteType: storedType,
+      loginId: pathID,
     };
 
     axios
       .post(`${API}/api/adduser`, formData)
       .then((response) => {
-        // console.log("User data stored successfully:", response.data);
+        console.log("User data stored successfully:", response.data);
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -98,16 +146,20 @@ const CHATBOT_THEME = {
 const ChatBotHelper = () => {
   const [conversation, setConversation] = useState([]);
   const [morePics, setMorePics] = useState([]);
+  const [moreVids, setMoreVids] = useState([]);
   const [details, setDetails] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [completed, setCompleted] = useState(false); // Track chatbot completion
+  const [chatbotOpened, setChatbotOpened] = useState(true);
 
   useEffect(() => {
-    const storedPath = localStorage.getItem("path");
+    const pathID = localStorage.getItem("pathID");
 
     axios
-      .get(`${API}/api/mergedetails?authId=${storedPath}`)
+      .get(`${API}/api/auth/mergedchatroutes?authId=${pathID}`)
       .then((response) => {
         setDetails(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -117,12 +169,27 @@ const ChatBotHelper = () => {
       });
   }, []);
 
+  // console.log(details);
+
   useEffect(() => {
     if (details?.mergedData && details.mergedData.length > 0) {
-      const messages = details?.mergedData[0]?.messages;
+      const messages =
+        details.mergedData[0].welcomeDetails[
+          details.mergedData[0].welcomeDetails.length - 1
+        ].messages;
+      // console.log(details.mergedData[0].welcomeDetails.length - 1);
+      // console.log(messages);
       setConversation(messages);
-      const photos = details?.mergedData[0]?.eventDetails?.photos;
+      const photos =
+        details?.mergedData[3]?.photosVideos[
+          details?.mergedData[3]?.photosVideos.length - 1
+        ]?.photos;
       setMorePics(photos);
+      const videos =
+        details?.mergedData[3]?.photosVideos[
+          details?.mergedData[3]?.photosVideos.length - 1
+        ]?.videos;
+      setMoreVids(videos);
     }
   }, [details.mergedData]);
 
@@ -135,14 +202,53 @@ const ChatBotHelper = () => {
   }
 
   //URLS START:
-  const photoUrl = details?.mergedData && details.mergedData[0]?.photo?.url;
+  const photoUrl =
+    details.mergedData[0].welcomeDetails[
+      details.mergedData[0].welcomeDetails.length - 1
+    ].photo.url;
+  const venue =
+    details?.mergedData?.[1]?.venue[details?.mergedData?.[1]?.venue.length - 1]
+      ?.venue;
+  // const locationUrl =
+  //   details?.mergedData?.[1]?.venue[details?.mergedData?.[1]?.venue.length - 1]
+  //     ?.location;
+  const date =
+    details?.mergedData?.[2]?.dateTime[
+      details?.mergedData?.[2]?.dateTime.length - 1
+    ]?.date || "";
+  const time =
+    details?.mergedData?.[2]?.dateTime[
+      details?.mergedData?.[2]?.dateTime.length - 1
+    ]?.time || "";
 
-  const venue = details?.mergedData?.[0]?.eventDetails?.venue || "";
-  const locationUrl = details?.mergedData?.[0]?.eventDetails?.location || "";
-  const date = details?.mergedData?.[0]?.eventDetails?.date || "";
-  const time = details?.mergedData?.[0]?.eventDetails?.time || "";
+  // console.log("Photo", photoUrl);
+  // console.log("venue", venue);
+  // console.log("locationUrl", locationUrl);
+  // console.log("date", date);
+  // console.log("time", time);
 
   //URLS END:
+
+  // STEP ORDERs:
+  const msgsOrder =
+    details.mergedData[0].welcomeDetails[
+      details.mergedData[0].welcomeDetails.length - 1
+    ].order;
+  const venueOrder =
+    details?.mergedData?.[1]?.venue[details?.mergedData?.[1]?.venue.length - 1]
+      .order;
+  const dateTimeOrder =
+    details?.mergedData?.[2]?.dateTime[
+      details?.mergedData?.[2]?.dateTime.length - 1
+    ]?.order;
+  const photoVideoOrder =
+    details?.mergedData[3]?.photosVideos[
+      details?.mergedData[3]?.photosVideos.length - 1
+    ]?.order;
+  // console.log(msgsOrder, venueOrder, dateTimeOrder, photoVideoOrder);
+  // STEP ORDERs
+
+  // -------------------------- ChatBot Steps-----------------------------
 
   const steps = [
     {
@@ -183,21 +289,24 @@ const ChatBotHelper = () => {
     },
     {
       id: "location",
-      component: <BotLocation message={venue} url={locationUrl} />,
+      component: <BotLocation venue={venue} />,
       trigger: "more-photos",
     },
     {
       id: "more-photos",
       options: [
-        { value: 1, label: "Show me more photos!", trigger: "more-pics" },
+        { value: 1, label: "Show photos and Videos!", trigger: "more-pics" },
       ],
     },
     {
       id: "more-pics",
       component: photoUrl ? (
-        <div className="image-container bg-[#f8bb7e]">
+        <div className="image-container">
           {morePics.map((pic, index) => (
             <BotImage key={index} Imgurl={pic.url} />
+          ))}
+          {moreVids.map((pic, index) => (
+            <BotVideo key={index} Imgurl={pic.url} />
           ))}
         </div>
       ) : null,
@@ -289,15 +398,45 @@ const ChatBotHelper = () => {
     },
   ];
 
+  // -------------------------- ChatBot Steps-----------------------------
+
+  // Callback function to handle chatbot completion
+  const handleChatbotComplete = (steps, values) => {
+    setTimeout(() => {
+      setCompleted(true);
+    }, 1500);
+  };
+
   if (loading) {
     return <div></div>;
   }
 
   return (
     <div className="boticon">
-      <ThemeProvider theme={CHATBOT_THEME}>
-        <ChatBot steps={steps} floating={true} opened={true} />
-      </ThemeProvider>
+      {completed ? (
+        <div>
+          <p></p>
+          {/* Additional content after chatbot completion */}
+          <ThemeProvider theme={CHATBOT_THEME}>
+            <ChatBot
+              steps={steps}
+              floating={true}
+              botAvatar="https://i.postimg.cc/pXNPHXhp/robot-9706469.png"
+              opened={false}
+              handleEnd={handleChatbotComplete}
+            />
+          </ThemeProvider>
+        </div>
+      ) : (
+        <ThemeProvider theme={CHATBOT_THEME}>
+          <ChatBot
+            steps={steps}
+            floating={true}
+            opened={true}
+            handleEnd={handleChatbotComplete} // Call handleChatbotComplete when chatbot completes
+          />
+        </ThemeProvider>
+      )}
     </div>
   );
 };
