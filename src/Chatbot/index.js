@@ -6,133 +6,79 @@ import axios from "axios";
 import { API } from "../utils/URL";
 import { Link } from "react-router-dom";
 
-const BotImage = ({ Imgurl }) => {
-  if (!Imgurl) {
-    return <div className="imagebox bg-[#f8bb7e]">NO PHOTO AVAILABLE</div>;
+const TestCompo = ({ details }) => {
+  if (!details || details?.length === 0) {
+    return <div>No details available</div>;
   }
 
-  return (
-    <div className="imagebox bg-[#f8bb7e]">
-      <img className=" bg-[#f8bb7e]" src={Imgurl} alt="wedimg" width="300px" />
-    </div>
-  );
-};
-const BotVideo = ({ Imgurl }) => {
-  if (!Imgurl) {
-    return <div className="imagebox bg-[#f8bb7e]">NO PHOTO AVAILABLE</div>;
-  }
+  const detail = details;
 
   return (
-    <div className="imagebox bg-[#f8bb7e]">
-      <video
-        controls
-        className=" bg-[#f8bb7e]"
-        src={Imgurl}
-        alt="wedimg"
-        width="300px"
-      />
+    <div>
+      {detail?.messages && (
+        <div className=" flex flex-col gap-1">
+          {/* <p>Messages:</p> */}
+          {detail?.messages?.map((message) => (
+            <p
+              className=" bg-[#F8BB7E] p-2 px-3 rounded-lg w-fit text-white"
+              key={message?._id}
+            >
+              {message?.text}
+            </p>
+          ))}
+        </div>
+      )}
+
+      {detail?.date && (
+        <div className="mt-1">
+          {/* <p className=" bg-[#F8BB7E] p-2 px-3 rounded-full w-fit text-white">
+            Date: {detail?.date}
+          </p> */}
+        </div>
+      )}
+
+      {detail?.time && (
+        <div className="mt-1">
+          {/* <p className=" bg-[#F8BB7E] p-2 px-3 rounded-full w-fit text-white">
+            Time: {detail?.time}
+          </p> */}
+        </div>
+      )}
+
+      {detail?.photos && detail?.photos?.length > 0 && (
+        <div className="mt-1 space-y-1 ">
+          {/* <p>Photos:</p> */}
+          {detail?.photos?.map((photo, index) => (
+            <img
+              className=" object-cover rounded-md overflow-hidden"
+              key={index}
+              src={photo?.url}
+              alt=""
+            />
+          ))}
+        </div>
+      )}
+
+      {detail?.videos && detail?.videos.length > 0 && (
+        <div>
+          {detail?.videos.map((video, index) => (
+            <video key={index} src={video?.url} controls />
+          ))}
+        </div>
+      )}
+
+      {detail.textInput && (
+        <div>
+          {/* <p>TextInput:</p>
+          <p>Order: {detail.textInput.order}</p> */}
+        </div>
+      )}
     </div>
   );
-};
-
-// const BotLocation = ({ url, message }) => {
-//   return (
-//     <div>
-//       {message}
-//       <iframe src={url} title="location"></iframe>
-//     </div>
-//   );
-// };
-const BotLocation = ({ venue }) => {
-  return (
-    <div className=" flex items-center flex-col">
-      <p>{venue}</p>
-      <iframe
-        title="Google Maps"
-        className=" w-[100%] h-[200px]"
-        style={{ border: 0 }}
-        src={`https://www.google.com/maps/embed/v1/place?key=${`AIzaSyCqbdL5YFZ01wrU29cN-P-UQrxdBPLLUic&q`}=${encodeURIComponent(
-          venue
-        )}`}
-        allowFullScreen
-      ></iframe>
-      <div className="mt-4">
-        <Link
-          to={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-            venue
-          )}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-white p-2 px-2 bg-[#F53C75] rounded-2xl"
-        >
-          Follow Map
-        </Link>
-      </div>
-    </div>
-  );
-};
-
-const Review = ({ steps }) => {
-  const { guestName, guestEmail } = steps;
-
-  const handleSubmit = () => {
-    const pathID = localStorage.getItem("pathID");
-    // console.log(storedPath);
-
-    const storedType = localStorage.getItem("type");
-    const formData = {
-      guestName: guestName.value,
-      guestEmail: guestEmail.value,
-      guestStatus: "Yes",
-      inviteType: storedType,
-      loginId: pathID,
-    };
-
-    axios
-      .post(`${API}/api/adduser`, formData)
-      .then((response) => {
-        console.log("User data stored successfully:", response.data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  };
-
-  useEffect(() => {
-    if (guestEmail.value) {
-      handleSubmit();
-    }
-  }, [guestEmail.value]);
-
-  return (
-    <div style={{ width: "100%" }}>
-      <h3>Summary</h3>
-      <table>
-        <tbody>
-          <tr>
-            <td>Name : </td>
-            <td>{guestName.value}</td>
-          </tr>
-          <tr>
-            <td>Email : </td>
-            <td>{guestEmail.value}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  );
-};
-
-Review.propTypes = {
-  steps: PropTypes.object,
-};
-
-Review.defaultProps = {
-  steps: undefined,
 };
 
 const CHATBOT_THEME = {
-  background: "#F0D7BE",
+  background: "#fff",
   fontFamily: "Roboto",
   headerBgColor: "#F2A559",
   headerFontColor: "#fff",
@@ -144,176 +90,93 @@ const CHATBOT_THEME = {
 };
 
 const ChatBotHelper = () => {
-  const [conversation, setConversation] = useState([]);
-  const [morePics, setMorePics] = useState([]);
-  const [moreVids, setMoreVids] = useState([]);
   const [details, setDetails] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [completed, setCompleted] = useState(false); // Track chatbot completion
-  const [chatbotOpened, setChatbotOpened] = useState(true);
+  const [order, setOrder] = useState("");
 
   useEffect(() => {
     const pathID = localStorage.getItem("pathID");
-
-    axios
-      .get(`${API}/api/auth/mergedchatroutes?authId=${pathID}`)
-      .then((response) => {
-        setDetails(response.data);
-        // console.log(response.data);
-      })
-      .catch((error) => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `${API}/api/auth/chatdetails?authId=${pathID}`
+        );
+        setDetails(response?.data?.details);
+        setOrder(response?.data?.details[0]?.order);
+      } catch (error) {
         console.error("Error:", error);
-      })
-      .finally(() => {
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    fetchData();
   }, []);
 
-  // console.log(details);
+  const option = details[0]?.options[0]?.name;
+  console.log(option);
 
-  useEffect(() => {
-    if (details?.mergedData && details.mergedData.length > 0) {
-      const messages =
-        details.mergedData[0].welcomeDetails[
-          details.mergedData[0].welcomeDetails.length - 1
-        ].messages;
-      // console.log(details.mergedData[0].welcomeDetails.length - 1);
-      // console.log(messages);
-      setConversation(messages);
-      const photos =
-        details?.mergedData[3]?.photosVideos[
-          details?.mergedData[3]?.photosVideos.length - 1
-        ]?.photos;
-      setMorePics(photos);
-      const videos =
-        details?.mergedData[3]?.photosVideos[
-          details?.mergedData[3]?.photosVideos.length - 1
-        ]?.videos;
-      setMoreVids(videos);
-    }
-  }, [details.mergedData]);
+  console.log(details);
+  console.log(order);
+  console.log(details[0]?.options[0]?.order);
 
-  if (loading) {
-    return <div></div>;
-  }
-
-  if (details?.mergedData?.length === 0) {
-    return <div></div>;
-  }
-
-  //URLS START:
-  const photoUrl =
-    details.mergedData[0].welcomeDetails[
-      details.mergedData[0].welcomeDetails.length - 1
-    ].photo.url;
-  const venue =
-    details?.mergedData?.[1]?.venue[details?.mergedData?.[1]?.venue.length - 1]
-      ?.venue;
-  // const locationUrl =
-  //   details?.mergedData?.[1]?.venue[details?.mergedData?.[1]?.venue.length - 1]
-  //     ?.location;
-  const date =
-    details?.mergedData?.[2]?.dateTime[
-      details?.mergedData?.[2]?.dateTime.length - 1
-    ]?.date || "";
-  const time =
-    details?.mergedData?.[2]?.dateTime[
-      details?.mergedData?.[2]?.dateTime.length - 1
-    ]?.time || "";
-
-  // console.log("Photo", photoUrl);
-  // console.log("venue", venue);
-  // console.log("locationUrl", locationUrl);
-  // console.log("date", date);
-  // console.log("time", time);
-
-  //URLS END:
-
-  // STEP ORDERs:
-  const msgsOrder =
-    details.mergedData[0].welcomeDetails[
-      details.mergedData[0].welcomeDetails.length - 1
-    ].order;
-  const venueOrder =
-    details?.mergedData?.[1]?.venue[details?.mergedData?.[1]?.venue.length - 1]
-      .order;
-  const dateTimeOrder =
-    details?.mergedData?.[2]?.dateTime[
-      details?.mergedData?.[2]?.dateTime.length - 1
-    ]?.order;
-  const photoVideoOrder =
-    details?.mergedData[3]?.photosVideos[
-      details?.mergedData[3]?.photosVideos.length - 1
-    ]?.order;
-  // console.log(msgsOrder, venueOrder, dateTimeOrder, photoVideoOrder);
-  // STEP ORDERs
-
-  // -------------------------- ChatBot Steps-----------------------------
+  // --------------------------chatbot steps--------------------------------
 
   const steps = [
     {
-      id: "1",
-      message: "Hi, There! 👋",
-      trigger: "2",
+      id: String(details[0]?.order),
+      component: <TestCompo details={details[0]} />,
+      trigger: "forward1",
     },
-    // dynamic msg
-    ...(conversation || []).map((msg, index) => ({
-      id: String(index + 2),
-      message: msg,
-      trigger: String(index + 3),
+    {
+      id: "forward1",
+      options:
+        details[0]?.options && details[0]?.options.length !== 0
+          ? details[0]?.options.map((option, index) => ({
+              value: index + 1,
+              label: String(option?.name),
+              trigger: String(option ? option?.order : ""),
+            }))
+          : [
+              {
+                value: 10,
+                label: "Will you be joining and blessing us?",
+                trigger: "show",
+              },
+            ],
+    },
+    {
+      id: "no",
+      message: "Okay! No problem.",
+      end: true,
+    },
+
+    ...details.slice(1).map((detail, index) => ({
+      id: String(detail?.order),
+      component: <TestCompo details={detail} />,
+      trigger: "forward2",
+    })),
+
+    ...details.slice(1)?.map((detail, index) => ({
+      id: "forward2",
+      options:
+        detail?.options && detail?.options.length !== 0
+          ? detail?.options.map((option, index) => ({
+              value: index + 1,
+              label: String(option?.name),
+              end: true,
+            }))
+          : [
+              {
+                value: 10,
+                label: "Show next",
+                trigger: "show",
+              },
+            ],
     })),
 
     {
-      id: String(conversation.length + 2),
-      component: photoUrl ? (
-        <>
-          <BotImage Imgurl={photoUrl} />
-        </>
-      ) : null,
-      trigger: "date-details",
-    },
-    {
-      id: "date-details",
-      options: [{ value: 1, label: "When is the wedding?", trigger: "date" }],
-    },
-    {
-      id: "date",
-      message: `It's ${date}, ${time}`,
-      trigger: "location-details",
-    },
-    {
-      id: "location-details",
-      options: [
-        { value: 1, label: "Where is the wedding?", trigger: "location" },
-      ],
-    },
-    {
-      id: "location",
-      component: <BotLocation venue={venue} />,
-      trigger: "more-photos",
-    },
-    {
-      id: "more-photos",
-      options: [
-        { value: 1, label: "Show photos and Videos!", trigger: "more-pics" },
-      ],
-    },
-    {
-      id: "more-pics",
-      component: photoUrl ? (
-        <div className="image-container">
-          {morePics.map((pic, index) => (
-            <BotImage key={index} Imgurl={pic.url} />
-          ))}
-          {moreVids.map((pic, index) => (
-            <BotVideo key={index} Imgurl={pic.url} />
-          ))}
-        </div>
-      ) : null,
-      trigger: "blessing",
-    },
-    {
-      id: "blessing",
+      id: "show",
       message: "Will you be joining and blessing us?",
       trigger: "yesNo",
     },
@@ -331,7 +194,7 @@ const ChatBotHelper = () => {
     {
       id: "yes",
       message: "Nice! Please provide your name",
-      trigger: "guestName", //
+      trigger: "guestName",
     },
     {
       id: "guestName",
@@ -383,28 +246,27 @@ const ChatBotHelper = () => {
     {
       id: "next2",
       message: "Great! Check out your summary",
-      trigger: "review",
-    },
-    {
-      id: "review",
-      component: <Review />,
-      asMessage: true,
-      trigger: "update",
-    },
-    {
-      id: "update",
-      message: "Thanks! Registration Successful. 😀",
       end: true,
     },
   ];
+  // --------------------------chatbot steps--------------------------------
 
-  // -------------------------- ChatBot Steps-----------------------------
+  // Generate steps dynamically based on the details array
+  const generateSteps = () => {
+    const steps = [];
 
-  // Callback function to handle chatbot completion
-  const handleChatbotComplete = (steps, values) => {
-    setTimeout(() => {
-      setCompleted(true);
-    }, 1500);
+    for (let i = 0; i < details.length; i++) {
+      const detail = details[i];
+
+      steps.push({
+        id: String(detail.order),
+        component: <TestCompo details={detail} />,
+        // trigger: i === details.length - 1 ? "next" : String(details[i + 1].order),
+        // end:true
+      });
+    }
+
+    return steps;
   };
 
   if (loading) {
@@ -413,30 +275,9 @@ const ChatBotHelper = () => {
 
   return (
     <div className="boticon">
-      {completed ? (
-        <div>
-          <p></p>
-          {/* Additional content after chatbot completion */}
-          <ThemeProvider theme={CHATBOT_THEME}>
-            <ChatBot
-              steps={steps}
-              floating={true}
-              botAvatar="https://i.postimg.cc/pXNPHXhp/robot-9706469.png"
-              opened={false}
-              handleEnd={handleChatbotComplete}
-            />
-          </ThemeProvider>
-        </div>
-      ) : (
-        <ThemeProvider theme={CHATBOT_THEME}>
-          <ChatBot
-            steps={steps}
-            floating={true}
-            opened={true}
-            handleEnd={handleChatbotComplete} // Call handleChatbotComplete when chatbot completes
-          />
-        </ThemeProvider>
-      )}
+      <ThemeProvider theme={CHATBOT_THEME}>
+        <ChatBot steps={steps} floating={true} opened={true} />
+      </ThemeProvider>
     </div>
   );
 };

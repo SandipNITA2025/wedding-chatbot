@@ -17,39 +17,26 @@ import {
   AiFillHome,
 } from "react-icons/ai";
 
-// import icons png:
-// import ImageHub from "../../icons/Photo Gallery.png";
-// import Video from "../../icons/Video.png";
-// import Calender from "../../icons/calender.png";
-// import Event from "../../icons/Event.png";
-// import Playlist from "../../icons/Playlist.png";
-// import Poll from "../../icons/Poll.png";
-// import Timer from "../../icons/Timer.png";
-// import Location from "../../icons/Location.png";
-// import Gift from "../../icons/Gift.png";
-// import orangebox from "../../icons/orangebox.png";
-// import brownbox from "../../icons/box.png";
 import Hati from "../../icons/hati.png";
 import bgbg from "../../icons/bgbg.png";
-import { useState } from "react";
 
-const HomeDesk = ({ backgroundImage }) => {
-  const [ipAddress, setIPAddress] = useState("");
-  const browserID = navigator.userAgent;
 
-  useEffect(() => {
-    const fetchIPAddress = async () => {
-      try {
-        const response = await fetch("https://api.ipify.org/?format=json");
-        const data = await response.json();
-        setIPAddress(data.ip);
-      } catch (error) {
-        console.log("Error fetching IP address:", error);
-      }
-    };
+const HomeDesk = () => {
+  // const browserID = navigator.userAgent;
 
-    fetchIPAddress();
-  }, []);
+  // useEffect(() => {
+  //   const fetchIPAddress = async () => {
+  //     try {
+  //       const response = await fetch("https://api.ipify.org/?format=json");
+  //       const data = await response.json();
+  //       setIPAddress(data.ip);
+  //     } catch (error) {
+  //       console.log("Error fetching IP address:", error);
+  //     }
+  //   };
+
+  //   fetchIPAddress();
+  // }, []);
 
   const iconsData = [
     {
@@ -153,9 +140,9 @@ const HomeDesk = ({ backgroundImage }) => {
         </div>
       </div>
       {/* <div>
-      <h1>Browser ID</h1>
-      <p>{browserID}</p>
-    </div> */}
+        <h1>Browser ID</h1>
+        <p>{browserID}</p>
+      </div> */}
       {/* LOWER CONTAINER */}
       <div className=" relative  w-full px-10 sm:px-10 sm:py-3 bg-[#F8F0EC] overflow-hidden flex-1 sm:flex-[2] flex  h-full">
         <div className=" absolute w-full h-[600px] flex items-start justify-start top-0 right-0 mx-auto">
