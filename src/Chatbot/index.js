@@ -101,7 +101,8 @@ const ChatBotHelper = () => {
         const response = await axios.get(
           `${API}/api/auth/chatdetails?authId=${pathID}`
         );
-        setDetails(response?.data?.details);
+        setDetails(response?.data?.details)
+        console.log(response?.data)
         setOrder(response?.data?.details[0]?.order);
       } catch (error) {
         console.error("Error:", error);
@@ -120,9 +121,10 @@ const ChatBotHelper = () => {
   console.log(order);
   console.log(details[0]?.options[0]?.order);
 
-  // --------------------------chatbot steps--------------------------------
+  // --------------------------chatbot steps manually--------------------------------
 
   const steps = [
+    // --------ORDER 1----------
     {
       id: String(details[0]?.order),
       component: <TestCompo details={details[0]} />,
@@ -140,7 +142,7 @@ const ChatBotHelper = () => {
           : [
               {
                 value: 10,
-                label: "Will you be joining and blessing us?",
+                label: "Show next",
                 trigger: "show",
               },
             ],
@@ -151,20 +153,21 @@ const ChatBotHelper = () => {
       end: true,
     },
 
+    // --------ORDER 2----------
     ...details.slice(1).map((detail, index) => ({
-      id: String(detail?.order),
+      id: String(details && detail?.order && detail.order),
       component: <TestCompo details={detail} />,
       trigger: "forward2",
     })),
 
-    ...details.slice(1)?.map((detail, index) => ({
+    {
       id: "forward2",
       options:
-        detail?.options && detail?.options.length !== 0
-          ? detail?.options.map((option, index) => ({
+        details[1]?.options && details[1]?.options.length !== 0
+          ? details[1]?.options.map((option, index) => ({
               value: index + 1,
               label: String(option?.name),
-              end: true,
+              trigger: String(option ? option?.order : ""),
             }))
           : [
               {
@@ -173,7 +176,207 @@ const ChatBotHelper = () => {
                 trigger: "show",
               },
             ],
+    },
+
+    // --------ORDER 3----------
+    ...details.slice(2).map((detail, index) => ({
+      id: String(details && detail?.order && detail.order),
+      component: <TestCompo details={detail} />,
+      trigger: "forward3",
     })),
+
+    {
+      id: "forward3",
+      options:
+        details[2]?.options && details[2]?.options.length !== 0
+          ? details[2]?.options.map((option, index) => ({
+              value: index + 1,
+              label: String(option?.name),
+              trigger: String(option ? option?.order : ""),
+            }))
+          : [
+              {
+                value: 10,
+                label: "Show next",
+                trigger: "show",
+              },
+            ],
+    },
+
+    // --------ORDER 4----------
+    ...details.slice(3).map((detail, index) => ({
+      id: String(details && detail.order),
+      component: <TestCompo details={detail} />,
+      trigger: "forward4",
+    })),
+
+    {
+      id: "forward4",
+      options:
+        details[3]?.options && details[3]?.options.length !== 0
+          ? details[3]?.options.map((option, index) => ({
+              value: index + 1,
+              label: String(option?.name),
+              trigger: String(option ? option?.order : ""),
+            }))
+          : [
+              {
+                value: 10,
+                label: "Show next",
+                trigger: "show",
+              },
+            ],
+    },
+
+    // --------ORDER 5----------
+    ...details.slice(4).map((detail, index) => ({
+      id: String(details && detail?.order && detail.order),
+      component: <TestCompo details={detail} />,
+      trigger: "forward5",
+    })),
+
+    {
+      id: "forward5",
+      options:
+        details[4]?.options && details[4]?.options.length !== 0
+          ? details[4]?.options.map((option, index) => ({
+              value: index + 1,
+              label: String(option?.name),
+              trigger: String(option ? option?.order : ""),
+            }))
+          : [
+              {
+                value: 10,
+                label: "Show next",
+                trigger: "show",
+              },
+            ],
+    },
+
+    // --------ORDER 6----------
+    ...details.slice(5).map((detail, index) => ({
+      id: String(details && detail?.order && detail.order),
+      component: <TestCompo details={detail} />,
+      trigger: "forward6",
+    })),
+
+    {
+      id: "forward6",
+      options:
+        details[5]?.options && details[5]?.options.length !== 0
+          ? details[5]?.options.map((option, index) => ({
+              value: index + 1,
+              label: String(option?.name),
+              trigger: String(option ? option?.order : ""),
+            }))
+          : [
+              {
+                value: 10,
+                label: "Show next",
+                trigger: "show",
+              },
+            ],
+    },
+
+    // --------ORDER 7----------
+    ...details.slice(6).map((detail, index) => ({
+      id: String(details && detail?.order && detail.order),
+      component: <TestCompo details={detail} />,
+      trigger: "forward7",
+    })),
+
+    {
+      id: "forward7",
+      options:
+        details[6]?.options && details[6]?.options.length !== 0
+          ? details[6]?.options.map((option, index) => ({
+              value: index + 1,
+              label: String(option?.name),
+              trigger: String(option ? option?.order : ""),
+            }))
+          : [
+              {
+                value: 10,
+                label: "Show next",
+                trigger: "show",
+              },
+            ],
+    },
+
+    // --------ORDER 8----------
+    ...details.slice(7).map((detail, index) => ({
+      id: String(details && detail?.order && detail.order),
+      component: <TestCompo details={detail} />,
+      trigger: "forward8",
+    })),
+
+    {
+      id: "forward8",
+      options:
+        details[7]?.options && details[7]?.options.length !== 0
+          ? details[7]?.options.map((option, index) => ({
+              value: index + 1,
+              label: String(option?.name),
+              trigger: String(option ? option?.order : ""),
+            }))
+          : [
+              {
+                value: 10,
+                label: "Show next",
+                trigger: "show",
+              },
+            ],
+    },
+
+    // --------ORDER 9----------
+    ...details.slice(8).map((detail, index) => ({
+      id: String(details && detail?.order && detail.order),
+      component: <TestCompo details={detail} />,
+      trigger: "forward9",
+    })),
+
+    {
+      id: "forward9",
+      options:
+        details[8]?.options && details[8]?.options.length !== 0
+          ? details[8]?.options.map((option, index) => ({
+              value: index + 1,
+              label: String(option?.name),
+              trigger: String(option ? option?.order : ""),
+            }))
+          : [
+              {
+                value: 10,
+                label: "Show next",
+                trigger: "show",
+              },
+            ],
+    },
+
+    // --------ORDER 10----------
+    ...details.slice(9).map((detail, index) => ({
+      id: String(details && detail?.order && detail.order),
+      component: <TestCompo details={detail} />,
+      trigger: "forward10",
+    })),
+
+    {
+      id: "forward10",
+      options:
+        details[9]?.options && details[9]?.options.length !== 0
+          ? details[9]?.options.map((option, index) => ({
+              value: index + 1,
+              label: String(option?.name),
+              trigger: String(option ? option?.order : ""),
+            }))
+          : [
+              {
+                value: 10,
+                label: "Show next",
+                trigger: "show",
+              },
+            ],
+    },
 
     {
       id: "show",
@@ -249,25 +452,113 @@ const ChatBotHelper = () => {
       end: true,
     },
   ];
-  // --------------------------chatbot steps--------------------------------
+  // --------------------------chatbot steps manually--------------------------------
 
-  // Generate steps dynamically based on the details array
-  const generateSteps = () => {
-    const steps = [];
+  // -------------dynamically render chats start------------
 
-    for (let i = 0; i < details.length; i++) {
-      const detail = details[i];
-
-      steps.push({
-        id: String(detail.order),
+  const dynamicCode = [];
+  for (let i = 0; i < details.length; i++) {
+    const order = i + 1;
+    dynamicCode.push(
+      ...details.slice(i).map((detail, index) => ({
+        id: String(details && detail?.order && detail.order),
         component: <TestCompo details={detail} />,
-        // trigger: i === details.length - 1 ? "next" : String(details[i + 1].order),
-        // end:true
-      });
-    }
+        trigger: `forward${order}`,
+      })),
+      {
+        id: `forward${order}`,
+        options:
+          details[i]?.options && details[i]?.options.length !== 0
+            ? details[i]?.options.map((option, index) => ({
+                value: index + 1,
+                label: String(option?.name),
+                trigger: String(option ? option?.order : ""),
+              }))
+            : [
+                {
+                  value: 10,
+                  label: "Proceed to the next",
+                  trigger: "show",
+                },
+              ],
+      },
+      {
+        id: "show",
+        message: "Will you be joining and blessing us?",
+        trigger: "yesNo",
+      },
+      {
+        id: "yesNo",
+        options: [
+          { value: 1, label: "Yeah! How can I miss this.", trigger: "yes" },
+          { value: 2, label: "Nope. I'm super busy", trigger: "no" },
+        ],
+      },
+      {
+        id: "no",
+        message: "Okay! No problem.",
+      },
+      {
+        id: "yes",
+        message: "Nice! Please provide your name",
+        trigger: "guestName",
+      },
+      {
+        id: "guestName",
+        user: true,
+        trigger: "next",
+        validator: (value) => {
+          if (!value || value.trim() === "") {
+            return "Please enter your name.";
+          }
+          return true;
+        },
+        user: true,
+        trigger: "next",
+        validator: (value) => {
+          if (!value || value.trim() === "") {
+            return "Please enter your name.";
+          }
+          return true;
+        },
+        user: true,
+        trigger: "next",
+      },
+      {
+        id: "next",
+        message: "Hi {previousValue}! What is your email?",
+        trigger: "guestEmail",
+      },
+      {
+        id: "guestEmail",
+        user: true,
+        trigger: "next2",
+        validator: (value) => {
+          if (!value || value.trim() === "") {
+            return "Please enter your email.";
+          }
+          return true;
+        },
+        user: true,
+        trigger: "next2",
+        validator: (value) => {
+          if (!value || value.trim() === "") {
+            return "Please enter your email.";
+          }
+          return true;
+        },
+        user: true,
+        trigger: "next2",
+      },
+      {
+        id: "next2",
+        message: "Thank you! Hope you will attend and bless us",
+        end: true,
+      }
+    );
+  }
 
-    return steps;
-  };
+  // -------------dynamically render chats start------------
 
   if (loading) {
     return <div></div>;
@@ -276,7 +567,7 @@ const ChatBotHelper = () => {
   return (
     <div className="boticon">
       <ThemeProvider theme={CHATBOT_THEME}>
-        <ChatBot steps={steps} floating={true} opened={true} />
+        <ChatBot steps={dynamicCode} floating={true} opened={true} />
       </ThemeProvider>
     </div>
   );
